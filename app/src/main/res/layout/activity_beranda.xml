@@ -11,8 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:layout_marginLeft="25dp"
+        android:orientation="horizontal">
         <ImageView
             android:layout_width="100dp"
             android:layout_height="150dp"
@@ -37,25 +37,13 @@
                 android:textSize="42sp"
                 android:textStyle="bold" />
         </LinearLayout>
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="vertical"-->
-<!--            android:layout_gravity="end">-->
-
-
-<!--        </LinearLayout>-->
     </LinearLayout>
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="30dp"
         android:layout_marginRight="25dp"
-        android:background="@drawable/soft_orange_rounded"
+        android:background="@drawable/soft_orange_rounded_top"
         android:orientation="vertical">
 
         <TextView
@@ -82,83 +70,91 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="15dp"
             android:layout_gravity="center"
             android:gravity="center_vertical"
-            android:background="@drawable/rounded_corner_orange"
-            android:orientation="horizontal"
-            android:padding="20dp">
+            android:background="@drawable/orange_rounded_full"
+            android:orientation="vertical"
+            android:padding="10dp">
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
+                android:orientation="horizontal">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_thermometer" />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Suhu"
-                    android:textSize="32sp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"/>
-
+                    android:gravity="end"
+                    android:text="23 C"
+                    android:textColor="#FFFFFF"
+                    android:textSize="64sp"
+                    android:textStyle="bold" />
             </LinearLayout>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="26 C"
+                android:text="Suhu"
+                android:textSize="32sp"
                 android:textColor="#FFFFFF"
-                android:textSize="64sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="15dp"
             android:layout_gravity="center"
-            android:background="@drawable/rounded_corner_orange"
-            android:orientation="horizontal"
-            android:padding="20dp"
-            android:layout_marginTop="20dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
+            android:gravity="center_vertical"
+            android:background="@drawable/orange_rounded_full"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_drop" />
-
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_drop" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="93 %"
+                    android:textColor="#FFFFFF"
+                    android:textSize="64sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="25 %"
+                android:text="Kelembapan"
+                android:textSize="32sp"
                 android:textColor="#FFFFFF"
-                android:textSize="64sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="20dp"
             android:gravity="bottom"
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/btn_lanjut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
-                android:background="@drawable/orange_rounded"
+                android:background="@drawable/orange_rounded_full"
                 android:text="Lanjut"
                 android:textColor="#FFFFFF"
                 android:textSize="28dp"
                 android:textStyle="bold" />
         </LinearLayout>
-        
     </LinearLayout>
 </LinearLayout>

@@ -43,6 +43,6 @@
             android:text="Mulai"
             android:textSize="28dp"
             android:textStyle="bold"
-            android:backgroundTint="#FF934F" />
+            android:background="@drawable/button_background"/>
 
 </RelativeLayout>

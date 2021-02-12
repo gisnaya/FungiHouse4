@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="20dp">
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:ems="10"
@@ -29,7 +29,7 @@
             android:textColor="#FFFFFF"
             android:textSize="24dp" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -45,20 +45,20 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:background="#FFFFEA"
+        android:background="@drawable/soft_orange_rounded_top"
         android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_speedometer" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:drawableTop="@drawable/ic_speedometer" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="23"
+            android:text="93%"
             android:textColor="#000000"
             android:textSize="64sp"
             android:textStyle="bold" />
@@ -67,14 +67,14 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FF934F"
+            android:background="@drawable/orange_rounded_top"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp">
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <EditText
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -82,7 +82,7 @@
                     android:inputType="date"
                     android:text="Senin, 01 Januari 2020"
                     android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
+                    android:textSize="25sp" />
                 <TableRow
                     android:background="#FF934F"
                     android:padding="10dp">
@@ -102,7 +102,7 @@
                         android:textColor="#FFFFFF"
                         android:gravity="center"
                         android:textSize="20sp"/>
-                    <TextView
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -127,7 +127,7 @@
                         android:textColor="#FFFFFF"
                         android:gravity="center"
                         android:textSize="20sp"/>
-                    <TextView
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -150,8 +150,59 @@
                         android:layout_weight="2"
                         android:text="23"
                         android:textColor="#FFFFFF"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:textSize="20sp"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center" />
+                </TableRow>
+                <TableRow
+                    android:background="#FF934F"
+                    android:padding="10dp">
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="10.00"
+                        android:textColor="#FFFFFF"
+                        android:gravity="center"
+                        android:textSize="20sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="23"
+                        android:textColor="#FFFFFF"
+                        android:gravity="center"
+                        android:textSize="20sp"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center" />
+                </TableRow>
+                <TableRow
+                    android:background="#FF934F"
+                    android:padding="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="10.00"
+                        android:textColor="#FFFFFF"
+                        android:gravity="center"
+                        android:textSize="20sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="23"
+                        android:textColor="#FFFFFF"
+                        android:gravity="center"
+                        android:textSize="20sp"/>
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
