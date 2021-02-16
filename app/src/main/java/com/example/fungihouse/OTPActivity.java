@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class OTPActivity extends AppCompatActivity {
-    Button btnSelesai;
+    Button btnKirim, btnSelesai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
