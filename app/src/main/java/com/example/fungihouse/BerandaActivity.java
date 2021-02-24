@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class BerandaActivity extends AppCompatActivity {
     Button btnLanjut;
@@ -19,7 +20,7 @@ public class BerandaActivity extends AppCompatActivity {
         btnLanjut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BerandaActivity.class);
+                Intent intent = new Intent(getApplicationContext(), GrafikActivity.class);
                 startActivity(intent);
             }
         });

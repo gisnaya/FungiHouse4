@@ -58,31 +58,51 @@
             <EditText
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:ems="1"
                 android:inputType="number"
                 android:background="@drawable/orange_rounded_full"
-                android:layout_margin="20dp"/>
+                android:layout_margin="20dp"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:lines="1"
+                android:textColor="#FFFFFF"
+                android:textSize="28dp"
+                android:gravity="center"/>
             <EditText
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:ems="1"
                 android:inputType="number"
                 android:background="@drawable/orange_rounded_full"
-                android:layout_margin="20dp"/>
+                android:layout_margin="20dp"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:lines="1"
+                android:textColor="#FFFFFF"
+                android:textSize="28dp"
+                android:gravity="center"/>
             <EditText
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:ems="1"
                 android:inputType="number"
                 android:background="@drawable/orange_rounded_full"
-                android:layout_margin="20dp"/>
+                android:layout_margin="20dp"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:lines="1"
+                android:textColor="#FFFFFF"
+                android:textSize="28dp"
+                android:gravity="center"/>
             <EditText
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:ems="1"
                 android:inputType="number"
                 android:background="@drawable/orange_rounded_full"
-                android:layout_margin="20dp"/>
+                android:layout_margin="20dp"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:lines="1"
+                android:textColor="#FFFFFF"
+                android:textSize="28dp"
+                android:gravity="center"/>
         </LinearLayout>
 
         <LinearLayout

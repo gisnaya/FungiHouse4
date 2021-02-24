@@ -48,7 +48,10 @@
                 android:gravity="center"
                 android:hint="Username"
                 android:textColorHint="#FFFFFF"
-                android:textSize="28dp" />
+                android:textColor="#FFFFFF"
+                android:textSize="28dp"
+                android:maxLines="1"
+                android:lines="1"/>
         </LinearLayout>
 
         <LinearLayout
