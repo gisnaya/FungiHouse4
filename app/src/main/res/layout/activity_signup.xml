@@ -96,7 +96,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
-                android:background="@drawable/orange_rounded_full"
+                android:background="@drawable/button_background"
                 android:text="Lanjut"
                 android:textColor="#FFFFFF"
                 android:textSize="28dp"

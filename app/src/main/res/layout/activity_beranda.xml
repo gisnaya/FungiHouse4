@@ -74,7 +74,7 @@
             android:layout_margin="15dp"
             android:layout_gravity="center"
             android:gravity="center_vertical"
-            android:background="@drawable/orange_rounded_full"
+            android:background="@drawable/button_background"
             android:orientation="vertical"
             android:padding="10dp">
             <LinearLayout
@@ -109,7 +109,7 @@
             android:layout_margin="15dp"
             android:layout_gravity="center"
             android:gravity="center_vertical"
-            android:background="@drawable/orange_rounded_full"
+            android:background="@drawable/button_background"
             android:orientation="vertical"
             android:padding="10dp">
             <LinearLayout
@@ -150,8 +150,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
+                android:layout_marginBottom="15dp"
                 android:layout_gravity="center"
-                android:background="@drawable/orange_rounded_full"
+                android:background="@drawable/button_background"
                 android:text="Lanjut"
                 android:textColor="#FFFFFF"
                 android:textSize="28dp"
