@@ -20,8 +20,9 @@
             android:layout_centerHorizontal="true"
             android:text="Selamat"
             android:textColor="#FF934F"
-            android:textSize="64dp"
-            android:textStyle="bold" />
+            android:textSize="60dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/preg"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,8 +30,9 @@
             android:layout_centerVertical="true"
             android:text="Datang"
             android:textColor="#FF934F"
-            android:textSize="64dp"
-            android:textStyle="bold" />
+            android:textSize="60dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/preg"/>
 
     </LinearLayout>
         <Button
@@ -41,9 +43,10 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
             android:text="Mulai"
-            android:textSize="28dp"
+            android:textSize="24dp"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:background="@drawable/button_background"/>
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/preg"/>
 
 </RelativeLayout>

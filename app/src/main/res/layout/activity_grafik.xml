@@ -13,9 +13,10 @@
         android:layout_margin="20dp"
         android:text="Grafik"
         android:textStyle="bold"
-        android:textSize="48dp"
+        android:textSize="44dp"
         android:textColor="#FFFFFF"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="@font/preg"/>
 
     <LinearLayout
         android:layout_width="match_parent"

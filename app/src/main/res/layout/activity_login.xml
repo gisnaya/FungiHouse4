@@ -25,8 +25,9 @@
             android:gravity="center_horizontal"
             android:text="Log In"
             android:textColor="#FF934F"
-            android:textSize="64sp"
-            android:textStyle="bold" />
+            android:textSize="60sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/preg"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,7 +52,8 @@
                 android:textColor="#FFFFFF"
                 android:textSize="28dp"
                 android:maxLines="1"
-                android:lines="1"/>
+                android:lines="1"
+                android:fontFamily="@font/preg"/>
         </LinearLayout>
 
         <LinearLayout
@@ -70,8 +72,9 @@
                 android:background="@drawable/button_background"
                 android:text="Masuk"
                 android:textColor="#FFFFFF"
-                android:textSize="28dp"
-                android:textStyle="bold" />
+                android:textSize="26dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/preg"/>
             <TextView
                 android:id="@+id/txt_login"
                 android:layout_width="match_parent"
@@ -81,7 +84,8 @@
                 android:text="Tidak memiliki akun? Klik di sini"
                 android:textColor="#FF934F"
                 android:gravity="center"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:fontFamily="@font/preg"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -18,7 +18,7 @@ public class BerandaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beranda);
 
-        lnKelembapan = findViewById(R.id.lnklb);
+        lnKelembapan = findViewById(R.id.btn_kelembapan);
         lnSuhu = findViewById(R.id.btn_suhu);
         lnKelembapan.setOnClickListener(new View.OnClickListener() {
             @Override

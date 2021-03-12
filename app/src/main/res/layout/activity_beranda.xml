@@ -27,15 +27,17 @@
                 android:layout_height="wrap_content"
                 android:text="Halo"
                 android:textColor="#FFFFEA"
-                android:textSize="64sp"
-                android:textStyle="bold"/>
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/preg"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="(Username)"
                 android:textColor="#FFFFEA"
-                android:textSize="42sp"
-                android:textStyle="bold" />
+                android:textSize="38sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/preg"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -54,7 +56,8 @@
             android:inputType="date"
             android:text="Senin, 01 Januari 2020"
             android:textColor="#FF934F"
-            android:textSize="24dp" />
+            android:textSize="24dp"
+            android:fontFamily="@font/preg"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -65,7 +68,8 @@
             android:inputType="time"
             android:text="07.00"
             android:textColor="#FF934F"
-            android:textSize="24dp" />
+            android:textSize="24dp"
+            android:fontFamily="@font/preg"/>
 
         <LinearLayout
             android:id="@+id/btn_suhu"
@@ -91,20 +95,22 @@
                     android:gravity="end"
                     android:text="23 C"
                     android:textColor="#FFFFFF"
-                    android:textSize="64sp"
-                    android:textStyle="bold" />
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/preg"/>
             </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Suhu"
-                android:textSize="32sp"
+                android:textSize="30sp"
                 android:textColor="#FFFFFF"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:fontFamily="@font/preg"/>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lnklb"
+            android:id="@+id/btn_kelembapan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -127,16 +133,18 @@
                     android:gravity="end"
                     android:text="93 %"
                     android:textColor="#FFFFFF"
-                    android:textSize="64sp"
-                    android:textStyle="bold" />
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/preg"/>
             </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Kelembapan"
-                android:textSize="32sp"
+                android:textSize="30sp"
                 android:textColor="#FFFFFF"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:fontFamily="@font/preg"/>
         </LinearLayout>
 
         <LinearLayout
@@ -156,8 +164,9 @@
                 android:background="@drawable/button_background"
                 android:text="Lanjut"
                 android:textColor="#FFFFFF"
-                android:textSize="28dp"
-                android:textStyle="bold" />
+                android:textSize="26dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/preg"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
