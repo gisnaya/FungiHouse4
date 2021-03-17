@@ -44,6 +44,7 @@
                 android:src="@drawable/ic_smartphone" />
 
             <EditText
+                android:id="@+id/nohp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="30dp"
@@ -73,6 +74,7 @@
                 android:layout_margin="12dp"
                 android:src="@drawable/ic_user"/>
             <EditText
+                android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="30dp"
@@ -88,9 +90,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="100dp"
-            android:orientation="vertical">
+            android:layout_height="225dp"
+            android:orientation="vertical"
+            android:paddingTop="100dp">
+
             <Button
                 android:id="@+id/btn_signup"
                 android:layout_width="wrap_content"
@@ -99,22 +102,30 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:background="@drawable/button_background"
+                android:fontFamily="@font/preg"
                 android:text="Lanjut"
                 android:textColor="#FFFFFF"
                 android:textSize="26dp"
-                android:textStyle="bold"
-                android:fontFamily="@font/preg"/>
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/txt_signup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
+                android:fontFamily="@font/preg"
+                android:gravity="center"
                 android:text="Sudah memiliki akun? Klik di sini"
                 android:textColor="#FF934F"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:fontFamily="@font/preg"/>
+                android:textSize="20sp" />
         </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
     </LinearLayout>
 </LinearLayout>
