@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "199075158332",
+    "project_id": "fungi-house-f2ef6",
+    "storage_bucket": "fungi-house-f2ef6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199075158332:android:66be5c59f376ef4e1f6639",
+        "android_client_info": {
+          "package_name": "com.example.fungihouse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199075158332-00239skpo9jbd9fqasm172njuggotn6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhl-DgYuRvhoNXyvKYBGyUzfSNBSadY1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199075158332-00239skpo9jbd9fqasm172njuggotn6k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
