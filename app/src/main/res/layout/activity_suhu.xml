@@ -28,7 +28,7 @@
             android:inputType="date"
             android:text="Senin, 01 Januari 2020"
             android:textColor="#FFFFFF"
-            android:textSize="24dp"
+            android:textSize="22sp"
             android:fontFamily="@font/preg"/>
 
         <TextView
@@ -36,9 +36,9 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:inputType="time"
-            android:text="07.00"
+            android:text="07:00.00"
             android:textColor="#FFFFFF"
-            android:textSize="24dp"
+            android:textSize="22sp"
             android:fontFamily="@font/preg"/>
     </LinearLayout>
 
@@ -89,36 +89,15 @@
                     android:textColor="#FFFFFF"
                     android:textSize="21sp"
                     android:fontFamily="@font/preg"/>
-                <TableRow
-                    android:background="#FF934F"
-                    android:padding="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="10.00"
-                        android:textColor="#FFFFFF"
-                        android:gravity="center"
-                        android:textSize="22sp"
-                        android:fontFamily="@font/preg"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="23"
-                        android:textColor="#FFFFFF"
-                        android:gravity="center"
-                        android:textSize="22sp"
-                        android:fontFamily="@font/preg"/>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:src="@drawable/ic_hose" />
-                </TableRow>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_suhu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </androidx.recyclerview.widget.RecyclerView>
+
+
+
 
             </TableLayout>
         </RelativeLayout>
