@@ -60,6 +60,7 @@
             android:fontFamily="@font/preg"/>
 
         <TextView
+            android:id="@+id/tv_waktu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
@@ -90,10 +91,18 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_thermometer" />
                 <TextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/tv_suhu"
+                    android:layout_width="154dp"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:text="23 C"
+                    android:textColor="#FFFFFF"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/preg"/>
+                <TextView
+                    android:text=" C"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textColor="#FFFFFF"
                     android:textSize="60sp"
                     android:textStyle="bold"
@@ -128,10 +137,18 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_drop" />
                 <TextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/tv_kelembapan"
+                    android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:text="93 %"
+                    android:textColor="#FFFFFF"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/preg"/>
+                <TextView
+                    android:text=" %"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:textColor="#FFFFFF"
                     android:textSize="60sp"
                     android:textStyle="bold"
