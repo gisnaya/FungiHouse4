@@ -90,23 +90,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_thermometer" />
+
                 <TextView
                     android:id="@+id/tv_suhu"
-                    android:layout_width="154dp"
+                    android:layout_width="132dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/preg"
                     android:gravity="end"
                     android:textColor="#FFFFFF"
                     android:textSize="60sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/preg"/>
+                    android:textStyle="bold" />
+
                 <TextView
-                    android:text=" C"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/preg"
+                    android:text=" °C"
                     android:textColor="#FFFFFF"
-                    android:textSize="60sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/preg"/>
+                    android:textSize="55sp"
+                    android:textStyle="bold" />
             </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
@@ -136,17 +138,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_drop" />
+
                 <TextView
                     android:id="@+id/tv_kelembapan"
-                    android:layout_width="160dp"
+                    android:layout_width="149dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/preg"
                     android:gravity="end"
                     android:textColor="#FFFFFF"
                     android:textSize="60sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/preg"/>
+                    android:textStyle="bold" />
                 <TextView
-                    android:text=" %"
+                    android:text="  %"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#FFFFFF"

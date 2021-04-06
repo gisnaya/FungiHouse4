@@ -4,23 +4,17 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent">
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TableRow
-                android:background="#FF934F"
-                android:padding="10dp">
                 <TextView
                     android:id="@+id/txt_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:inputType="time"
-                    android:text="10:00.00"
-                    android:textColor="#FFFFFF"
+                    android:text="10:00:00"
+                    android:textColor="@color/black"
                     android:gravity="center"
                     android:textSize="22sp"
                     android:fontFamily="@font/preg"/>
@@ -30,21 +24,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="23"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/black"
                     android:gravity="center"
                     android:textSize="22sp"
                     android:fontFamily="@font/preg"/>
-                <ImageView
-                    android:id="@+id/ikon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:src="@drawable/ic_hose" />
-            </TableRow>
-        </TableLayout>
-    </RelativeLayout>
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

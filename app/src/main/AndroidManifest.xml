@@ -13,6 +13,7 @@
         android:theme="@style/Theme.FungiHouse">
         <activity android:name=".GrafikActivity"></activity>
         <activity android:name=".KelembapanActivity" />
+        <activity android:name=".SuhuActivity" />
         <activity android:name=".BerandaActivity" />
         <activity android:name=".OTPActivity" />
         <activity android:name=".SignupActivity" />

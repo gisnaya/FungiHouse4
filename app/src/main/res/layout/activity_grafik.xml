@@ -26,5 +26,25 @@
         android:background="@drawable/soft_orange_rounded_top"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:ems="10"
+            android:inputType="date"
+            android:text="Senin, 01 Januari 2020"
+            android:textColor="#FF934F"
+            android:textSize="20dp"
+            android:fontFamily="@font/preg"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/grafik"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
     </LinearLayout>
 </LinearLayout>
