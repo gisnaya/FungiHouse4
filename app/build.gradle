@@ -48,6 +48,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:9.0.2'
     implementation 'com.firebaseui:firebase-ui-database:6.2.1'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'org.jetbrains:annotations-java5:15.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

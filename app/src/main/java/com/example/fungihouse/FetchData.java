@@ -4,6 +4,8 @@ public class FetchData {
     Long suhu;
     String waktu;
 
+    public FetchData() { }
+
     public FetchData(Long suhu, String waktu) {
         this.suhu = suhu;
         this.waktu = waktu;

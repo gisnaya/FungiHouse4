@@ -55,27 +55,50 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@drawable/ic_speedometer" />
-
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/tv_suhu"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/preg"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="°C"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/preg"/>
+        </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="23°C"
-            android:textColor="#000000"
-            android:textSize="60sp"
-            android:textStyle="bold"
+            android:background="@drawable/orange_rounded_top"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:ems="12"
+            android:inputType="date"
+            android:text="Senin, 01 Januari 2020"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
             android:fontFamily="@font/preg"/>
 
-
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_suhu"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                </androidx.recyclerview.widget.RecyclerView>
-
-
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_suhu"
+            tools:listitem="@layout/item_suhu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 </LinearLayout>
