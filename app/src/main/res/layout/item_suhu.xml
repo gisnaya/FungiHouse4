@@ -39,7 +39,4 @@
                     android:gravity="center"
                     android:src="@drawable/ic_hose" />
         </LinearLayout>
-
-
-
 </LinearLayout>
