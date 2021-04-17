@@ -59,64 +59,101 @@
             android:layout_marginTop="30dp"
             android:layout_gravity="center">
             <EditText
+                android:id="@+id/inputCode1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:inputType="number"
                 android:background="@drawable/orange_rounded_full"
-                android:layout_margin="20dp"
                 android:maxLength="1"
-                android:maxLines="1"
-                android:lines="1"
                 android:textColor="#FFFFFF"
                 android:textSize="26dp"
+                android:textStyle="bold"
                 android:gravity="center"
-                android:fontFamily="@font/preg"/>
+                android:fontFamily="@font/preg"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"/>
             <EditText
+                android:id="@+id/inputCode2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:inputType="number"
+                android:layout_marginLeft="4dp"
                 android:background="@drawable/orange_rounded_full"
-                android:layout_margin="20dp"
                 android:maxLength="1"
-                android:maxLines="1"
-                android:lines="1"
                 android:textColor="#FFFFFF"
                 android:textSize="26dp"
+                android:textStyle="bold"
                 android:gravity="center"
-                android:fontFamily="@font/preg"/>
+                android:fontFamily="@font/preg"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"/>
             <EditText
+                android:id="@+id/inputCode3"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginLeft="4dp"
                 android:inputType="number"
                 android:background="@drawable/orange_rounded_full"
-                android:layout_margin="20dp"
                 android:maxLength="1"
-                android:maxLines="1"
-                android:lines="1"
                 android:textColor="#FFFFFF"
                 android:textSize="26dp"
+                android:textStyle="bold"
                 android:gravity="center"
-                android:fontFamily="@font/preg"/>
+                android:fontFamily="@font/preg"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"/>
             <EditText
+                android:id="@+id/inputCode4"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginLeft="4dp"
                 android:inputType="number"
                 android:background="@drawable/orange_rounded_full"
-                android:layout_margin="20dp"
                 android:maxLength="1"
-                android:maxLines="1"
-                android:lines="1"
                 android:textColor="#FFFFFF"
                 android:textSize="26dp"
+                android:textStyle="bold"
                 android:gravity="center"
-                android:fontFamily="@font/preg"/>
+                android:fontFamily="@font/preg"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"/>
+            <EditText
+                android:id="@+id/inputCode5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="4dp"
+                android:inputType="number"
+                android:background="@drawable/orange_rounded_full"
+                android:maxLength="1"
+                android:textColor="#FFFFFF"
+                android:textSize="26dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:fontFamily="@font/preg"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"/>
+            <EditText
+                android:id="@+id/inputCode6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="4dp"
+                android:inputType="number"
+                android:background="@drawable/orange_rounded_full"
+                android:maxLength="1"
+                android:textColor="#FFFFFF"
+                android:textSize="26dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:fontFamily="@font/preg"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"/>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="150dp"
-            android:gravity="bottom"
+            android:paddingTop="100dp"
             android:orientation="vertical">
             <Button
                 android:id="@+id/btn_selesai"
@@ -134,7 +171,7 @@
             <TextView
                 android:id="@+id/txt_otp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="65dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:text="Kirim ulang OTP? Klik di sini"
@@ -142,6 +179,13 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:fontFamily="@font/preg"/>
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible" />
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
