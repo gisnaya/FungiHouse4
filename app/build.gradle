@@ -51,6 +51,7 @@ dependencies {
     implementation 'org.jetbrains:annotations-java5:15.0'
     implementation 'org.jetbrains:annotations-java5:15.0'
     implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'androidx.browser:browser:1.2.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

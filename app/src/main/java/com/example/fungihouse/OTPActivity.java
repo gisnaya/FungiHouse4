@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,10 +33,10 @@ public class OTPActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_o_t_p);
 
-        TextView textMobile = findViewById(R.id.nohp);
-        textMobile.setText(String.format(
-                "+62-%s", getIntent().getStringArrayExtra("mobile")
-        ));
+//        TextView textMobile = findViewById(R.id.nohp);
+//        textMobile.setText(String.format(
+//                "+62-%s", getIntent().getStringExtra("mobile")
+//        ));
 
         inputCode1 = findViewById(R.id.inputCode1);
         inputCode2 = findViewById(R.id.inputCode2);
@@ -46,6 +47,7 @@ public class OTPActivity extends AppCompatActivity {
 
         setupOTPInputs();
 
+        final ProgressBar progressBar = findViewById(R.id.progressBar);
         final Button buttonSelesai = findViewById(R.id.btn_selesai);
 
         verificationId = getIntent().getStringExtra("verificationId");
@@ -71,6 +73,7 @@ public class OTPActivity extends AppCompatActivity {
                                 inputCode6.getText().toString();
 
                 if (verificationId != null){
+                    progressBar.setVisibility(View.VISIBLE);
                     buttonSelesai.setVisibility(View.INVISIBLE);
                     PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(
                             verificationId,
@@ -80,6 +83,7 @@ public class OTPActivity extends AppCompatActivity {
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
+                                    progressBar.setVisibility(View.GONE);
                                     buttonSelesai.setVisibility(View.VISIBLE);
                                     if (task.isSuccessful()){
                                         Intent intent = new Intent(getApplicationContext(), BerandaActivity.class);
@@ -115,7 +119,7 @@ public class OTPActivity extends AppCompatActivity {
                             @Override
                             public void onCodeSent(@NonNull String newVerificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                verificationId = newVerificationId;
-                                Toast.makeText(OTPActivity.this, "OTP Telah Dikirim", Toast.LENGTH_SHORT).show();
+                               Toast.makeText(OTPActivity.this, "OTP Telah Dikirim", Toast.LENGTH_SHORT).show();
                             }
                         }
                 );

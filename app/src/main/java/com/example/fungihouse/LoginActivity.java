@@ -24,32 +24,29 @@ public class LoginActivity extends AppCompatActivity {
     TextView txtLogin;
     EditText mUsername;
     ProgressBar progressBar;
-    FirebaseAuth mFirebaseAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
+//    FirebaseAuth mFirebaseAuth;
+//    private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mFirebaseAuth = FirebaseAuth.getInstance();
+//        mFirebaseAuth = FirebaseAuth.getInstance();
         mUsername   = findViewById(R.id.username);
         progressBar = findViewById(R.id.progressBar);
 
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
-                if ( mFirebaseUser !=null ){
-                    Toast.makeText(LoginActivity.this,"Berhasil Login",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, BerandaActivity.class);
-                    startActivity(intent);
-                }
-                else {
-                    Toast.makeText(LoginActivity.this,"Silahkan Login",Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
+//        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
+//                if ( mFirebaseUser !=null ){
+//                    Toast.makeText(LoginActivity.this,"Berhasil Login",Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(LoginActivity.this, BerandaActivity.class);
+//                    startActivity(intent);
+//                }
+//            }
+//        };
 
         btnMasuk = findViewById(R.id.btn_masuk);
         btnMasuk.setOnClickListener(new View.OnClickListener() {
@@ -62,9 +59,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (username.isEmpty()) {
                     mUsername.setError("Username Tidak Boleh Kosong");
                     mUsername.requestFocus();
-                }
-                else {
-                    Toast.makeText(LoginActivity.this, "Berhasil Login", Toast.LENGTH_SHORT).show();
                 }
                 progressBar.setVisibility(View.VISIBLE);
             }
@@ -79,9 +73,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+//    }
 }

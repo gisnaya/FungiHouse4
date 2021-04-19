@@ -43,7 +43,7 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        EditText inputMobile = findViewById(R.id.nohp);
+        final EditText inputMobile = findViewById(R.id.nohp);
         Button buttonSignUp = findViewById(R.id.btn_signup);
 
         final ProgressBar progressBar = findViewById(R.id.progressBar);
@@ -51,12 +51,13 @@ public class SignupActivity extends AppCompatActivity {
         buttonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(inputMobile.getText().toString().trim().isEmpty()){
+                if (inputMobile.getText().toString().trim().isEmpty()) {
                     Toast.makeText(SignupActivity.this, "Masukkan Nomor Handphone", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 progressBar.setVisibility(View.VISIBLE);
                 buttonSignUp.setVisibility(View.INVISIBLE);
+
 
                 PhoneAuthProvider.getInstance().verifyPhoneNumber(
                         "+62" + inputMobile.getText().toString(),
@@ -88,7 +89,6 @@ public class SignupActivity extends AppCompatActivity {
                             }
                         }
                 );
-
             }
         });
 
