@@ -71,7 +71,8 @@
                 android:gravity="center"
                 android:fontFamily="@font/preg"
                 android:imeOptions="actionNext"
-                android:importantForAutofill="no"/>
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"/>
             <EditText
                 android:id="@+id/inputCode2"
                 android:layout_width="50dp"
@@ -86,7 +87,8 @@
                 android:gravity="center"
                 android:fontFamily="@font/preg"
                 android:imeOptions="actionNext"
-                android:importantForAutofill="no"/>
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"/>
             <EditText
                 android:id="@+id/inputCode3"
                 android:layout_width="50dp"
@@ -101,7 +103,8 @@
                 android:gravity="center"
                 android:fontFamily="@font/preg"
                 android:imeOptions="actionNext"
-                android:importantForAutofill="no"/>
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"/>
             <EditText
                 android:id="@+id/inputCode4"
                 android:layout_width="50dp"
@@ -116,7 +119,8 @@
                 android:gravity="center"
                 android:fontFamily="@font/preg"
                 android:imeOptions="actionNext"
-                android:importantForAutofill="no"/>
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"/>
             <EditText
                 android:id="@+id/inputCode5"
                 android:layout_width="50dp"
@@ -131,7 +135,8 @@
                 android:gravity="center"
                 android:fontFamily="@font/preg"
                 android:imeOptions="actionNext"
-                android:importantForAutofill="no"/>
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"/>
             <EditText
                 android:id="@+id/inputCode6"
                 android:layout_width="50dp"
@@ -146,8 +151,8 @@
                 android:gravity="center"
                 android:fontFamily="@font/preg"
                 android:imeOptions="actionNext"
-                android:importantForAutofill="no"/>
-
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"/>
         </LinearLayout>
 
         <LinearLayout

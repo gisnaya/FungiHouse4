@@ -26,23 +26,11 @@ import java.util.concurrent.TimeUnit;
 
 public class SignupActivity extends AppCompatActivity {
     TextView txtSignup;
-    private EditText username;
-
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
-    UsernameInfo usernameInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
-        username = findViewById(R.id.username);
-
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Username");
-
-        usernameInfo = new UsernameInfo();
 
         final EditText inputMobile = findViewById(R.id.nohp);
         Button buttonSignUp = findViewById(R.id.btn_signup);
@@ -58,14 +46,6 @@ public class SignupActivity extends AppCompatActivity {
                 }
                 progressBar.setVisibility(View.VISIBLE);
                 buttonSignUp.setVisibility(View.INVISIBLE);
-
-                String name = username.getText().toString();
-
-                if (TextUtils.isEmpty(name)){
-                    Toast.makeText(SignupActivity.this, "Masukkan Username", Toast.LENGTH_SHORT).show();
-                }else{
-                    addDataOnFirebase(name);
-                }
 
                 PhoneAuthProvider.getInstance().verifyPhoneNumber(
                         "+62" + inputMobile.getText().toString(),
@@ -98,23 +78,6 @@ public class SignupActivity extends AppCompatActivity {
                         }
                 );
             }
-
-            private void addDataOnFirebase(String name) {
-                usernameInfo.setUsername(name);
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.setValue(name);
-                        Toast.makeText(SignupActivity.this, "Username ditambahkan", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(SignupActivity.this, "Username gagal ditambahkan" + error, Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-            }
         });
 
 
@@ -126,6 +89,5 @@ public class SignupActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

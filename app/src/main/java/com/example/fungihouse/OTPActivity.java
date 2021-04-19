@@ -33,11 +33,6 @@ public class OTPActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_o_t_p);
 
-//        TextView textMobile = findViewById(R.id.nohp);
-//        textMobile.setText(String.format(
-//                "+62-%s", getIntent().getStringExtra("mobile")
-//        ));
-
         inputCode1 = findViewById(R.id.inputCode1);
         inputCode2 = findViewById(R.id.inputCode2);
         inputCode3 = findViewById(R.id.inputCode3);
