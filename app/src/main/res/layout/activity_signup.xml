@@ -47,12 +47,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:hint="(+62)-No Handphone"
+                android:hint="No Handphone"
                 android:inputType="phone"
                 android:maxLength="15"
                 android:textColorHint="#FFFFFF"
                 android:textColor="#FFFFFF"
-                android:textSize="21dp"
+                android:textSize="28sp"
                 android:maxLines="1"
                 android:lines="1"
                 android:fontFamily="@font/preg"/>
@@ -88,7 +88,7 @@
                 android:gravity="center"
                 android:text="Sudah memiliki akun? Klik di sini"
                 android:textColor="#FF934F"
-                android:textSize="20sp" />
+                android:textSize="22sp" />
         </LinearLayout>
 
         <ProgressBar

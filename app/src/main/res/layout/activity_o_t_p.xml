@@ -40,7 +40,7 @@
                 android:gravity="center_horizontal"
                 android:text="Masukkan"
                 android:textColor="#FF934F"
-                android:textSize="30sp"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/preg"/>
             <TextView
@@ -49,7 +49,7 @@
                 android:gravity="center_horizontal"
                 android:text="Kode Verifikasi"
                 android:textColor="#FF934F"
-                android:textSize="30sp"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/preg"/>
         <LinearLayout
@@ -182,7 +182,7 @@
                 android:text="Kirim ulang OTP? Klik di sini"
                 android:textColor="#FF934F"
                 android:gravity="center"
-                android:textSize="20sp"
+                android:textSize="23sp"
                 android:fontFamily="@font/preg"/>
             <ProgressBar
                 android:id="@+id/progressBar"
