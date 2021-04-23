@@ -43,11 +43,11 @@ public class OTPActivity extends AppCompatActivity {
         setupOTPInputs();
 
         final ProgressBar progressBar = findViewById(R.id.progressBar);
-        final Button buttonSelesai = findViewById(R.id.btn_selesai);
+        final Button buttonOtp = findViewById(R.id.btn_otp);
 
         verificationId = getIntent().getStringExtra("verificationId");
 
-        buttonSelesai.setOnClickListener(new View.OnClickListener() {
+        buttonOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(inputCode1.getText().toString().trim().isEmpty()
@@ -69,7 +69,7 @@ public class OTPActivity extends AppCompatActivity {
 
                 if (verificationId != null){
                     progressBar.setVisibility(View.VISIBLE);
-                    buttonSelesai.setVisibility(View.INVISIBLE);
+                    buttonOtp.setVisibility(View.INVISIBLE);
                     PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(
                             verificationId,
                             code
@@ -79,9 +79,9 @@ public class OTPActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     progressBar.setVisibility(View.GONE);
-                                    buttonSelesai.setVisibility(View.VISIBLE);
+                                    buttonOtp.setVisibility(View.VISIBLE);
                                     if (task.isSuccessful()){
-                                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                        Intent intent = new Intent(getApplicationContext(), UsernameActivity.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                     }else {

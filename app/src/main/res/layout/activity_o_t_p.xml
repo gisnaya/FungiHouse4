@@ -161,14 +161,14 @@
             android:paddingTop="100dp"
             android:orientation="vertical">
             <Button
-                android:id="@+id/btn_selesai"
+                android:id="@+id/btn_otp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:background="@drawable/button_background"
-                android:text="Selesai"
+                android:text="Lanjut"
                 android:textColor="#FFFFFF"
                 android:textSize="26dp"
                 android:textStyle="bold"

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#FF934F"
-    tools:context=".SignupActivity">
+    tools:context=".UsernameActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,9 +22,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
-            android:text="Sign Up"
+            android:text="Masukkan Username"
             android:textColor="#FF934F"
-            android:textSize="60sp"
+            android:textSize="45sp"
             android:textStyle="bold"
             android:fontFamily="@font/preg"/>
 
@@ -35,21 +36,17 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/orange_rounded_full"
             android:orientation="horizontal">
-
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="12dp"
-                android:src="@drawable/ic_smartphone" />
-
+                android:src="@drawable/ic_user"/>
             <EditText
-                android:id="@+id/nohp"
+                android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:hint="No Handphone"
-                android:inputType="phone"
-                android:maxLength="15"
+                android:hint="Username"
                 android:textColorHint="#FFFFFF"
                 android:textColor="#FFFFFF"
                 android:textSize="28sp"
@@ -60,42 +57,30 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:orientation="vertical"
-            android:paddingTop="150dp">
+            android:layout_height="match_parent"
+            android:paddingTop="190dp"
+            android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_signup"
+                android:id="@+id/btn_selesai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:background="@drawable/button_background"
-                android:fontFamily="@font/preg"
-                android:text="Daftar"
+                android:text="Selesai"
                 android:textColor="#FFFFFF"
                 android:textSize="26dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/preg"/>
 
-            <TextView
-                android:id="@+id/txt_signup"
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/preg"
-                android:gravity="center"
-                android:text="Sudah memiliki akun? Klik di sini"
-                android:textColor="#FF934F"
-                android:textSize="22sp" />
+                android:layout_height="wrap_content"
+                android:visibility="invisible" />
         </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible" />
     </LinearLayout>
 </LinearLayout>

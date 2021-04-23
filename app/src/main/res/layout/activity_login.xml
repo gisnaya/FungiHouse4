@@ -22,31 +22,59 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
-            android:text="Masukkan Username"
+            android:text="Log In"
             android:textColor="#FF934F"
-            android:textSize="45sp"
+            android:textSize="60sp"
             android:textStyle="bold"
             android:fontFamily="@font/preg"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Masukkan"
+                android:textColor="#FF934F"
+                android:textSize="33sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/preg"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Nomor Handphone"
+                android:textColor="#FF934F"
+                android:textSize="33sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/preg"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/orange_rounded_full"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="12dp"
-                android:src="@drawable/ic_user"/>
+                android:src="@drawable/ic_smartphone" />
+
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/nohp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:hint="Username"
+                android:hint="No Handphone"
+                android:inputType="phone"
+                android:maxLength="15"
                 android:textColorHint="#FFFFFF"
                 android:textColor="#FFFFFF"
                 android:textSize="28sp"
@@ -58,11 +86,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="100dp"
+            android:paddingTop="50dp"
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_masuk"
+                android:id="@+id/btn_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -86,13 +114,13 @@
                 android:text="Tidak memiliki akun? Klik di sini"
                 android:textColor="#FF934F"
                 android:textSize="23sp" />
-
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="invisible" />
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

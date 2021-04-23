@@ -1,10 +1,12 @@
 package com.example.fungihouse;
 
+import android.widget.EditText;
+
 public class UsernameInfo {
-    private String username;
+    String username;
 
-    public UsernameInfo(){
-
+    public UsernameInfo(String username) {
+        this.username = username;
     }
 
     public String getUsername() {

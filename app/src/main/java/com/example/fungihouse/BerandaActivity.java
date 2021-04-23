@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ public class BerandaActivity extends AppCompatActivity {
     DatabaseReference reff;
     Button btnLanjut;
     LinearLayout lnSuhu, lnKelembapan;
+    ImageView img_off;
 
 
     @Override
@@ -71,6 +73,14 @@ public class BerandaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), GrafikActivity.class);
+                startActivity(intent);
+            }
+        });
+        img_off = findViewById(R.id.img_off);
+        img_off.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivity(intent);
             }
         });
