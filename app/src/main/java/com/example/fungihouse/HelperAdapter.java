@@ -35,7 +35,7 @@ public class HelperAdapter extends RecyclerView.Adapter {
 
         FetchData fetchData=fetchDataList.get(position);
         viewHolderClass.suhu.setText(fetchData.getSuhu().toString());
-        viewHolderClass.waktu.setText(fetchData.getWaktu());
+        viewHolderClass.time.setText(fetchData.getTime());
 
     }
 
@@ -45,12 +45,12 @@ public class HelperAdapter extends RecyclerView.Adapter {
     }
 
     public class ViewHolderClass extends RecyclerView.ViewHolder{
-        TextView suhu,waktu;
+        TextView suhu, time;
 
         public ViewHolderClass(@NonNull View itemView) {
             super(itemView);
             suhu=itemView.findViewById(R.id.txt_temp);
-            waktu=itemView.findViewById(R.id.txt_time);
+            time=itemView.findViewById(R.id.txt_time);
         }
     }
 }

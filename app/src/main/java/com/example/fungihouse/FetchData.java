@@ -1,29 +1,36 @@
 package com.example.fungihouse;
 
 public class FetchData {
-    Long suhu;
-    String waktu;
+    Double suhu;
+    String time;
+    String date;
 
-    public FetchData() { }
 
-    public FetchData(Long suhu, String waktu) {
+    public FetchData(Double suhu, String time, String date) {
         this.suhu = suhu;
-        this.waktu = waktu;
+        this.time = time;
+        this.date = date;
     }
 
-    public Long getSuhu() {
+
+    public Double getSuhu() {
         return suhu;
     }
 
-    public void setSuhu(Long suhu) {
+    public void setSuhu(Double suhu) {
         this.suhu = suhu;
     }
 
-    public String getWaktu() {
-        return waktu;
+    public String getTime() {
+        return time;
     }
 
-    public void setWaktu(String waktu) {
-        this.waktu = waktu;
+    public void setTime(String time) {
+        this.time = time;
     }
+
+    public String getDate() { return date; }
+
+    public void setDate(String date) { this.date = date; }
+
 }

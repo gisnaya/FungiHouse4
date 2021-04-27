@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:text="Halo"
                 android:textColor="#FFFFEA"
-                android:textSize="60sp"
+                android:textSize="45sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/preg"/>
             <TextView
@@ -40,12 +40,12 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/preg"/>
         </LinearLayout>
+
         <ImageView
             android:id="@+id/img_off"
-            android:layout_width="30dp"
+            android:layout_width="60dp"
             android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/ic_off" />
     </LinearLayout>
     <LinearLayout
@@ -56,7 +56,9 @@
         android:background="@drawable/soft_orange_rounded_top"
         android:orientation="vertical">
 
+
         <TextView
+            android:id="@+id/tv_day"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -64,11 +66,11 @@
             android:inputType="date"
             android:text="Senin, 01 Januari 2020"
             android:textColor="#FF934F"
-            android:textSize="24dp"
+            android:textSize="28dp"
             android:fontFamily="@font/preg"/>
 
         <TextView
-            android:id="@+id/tv_waktu"
+            android:id="@+id/tv_hour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
@@ -77,7 +79,7 @@
             android:inputType="time"
             android:text="07.00"
             android:textColor="#FF934F"
-            android:textSize="24dp"
+            android:textSize="28dp"
             android:fontFamily="@font/preg"/>
 
         <LinearLayout

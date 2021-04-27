@@ -31,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="125dp"
+            android:layout_gravity="center"
             android:layout_marginRight="20dp"
             android:background="@drawable/orange_rounded_full"
             android:orientation="horizontal">
@@ -52,7 +53,7 @@
                 android:maxLength="15"
                 android:textColorHint="#FFFFFF"
                 android:textColor="#FFFFFF"
-                android:textSize="28sp"
+                android:textSize="30sp"
                 android:maxLines="1"
                 android:lines="1"
                 android:fontFamily="@font/preg"/>
@@ -60,9 +61,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:orientation="vertical"
-            android:paddingTop="150dp">
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btn_signup"
@@ -81,7 +82,7 @@
             <TextView
                 android:id="@+id/txt_signup"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="65dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/preg"
@@ -89,13 +90,14 @@
                 android:text="Sudah memiliki akun? Klik di sini"
                 android:textColor="#FF934F"
                 android:textSize="22sp" />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible" />
         </LinearLayout>
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible" />
+
     </LinearLayout>
 </LinearLayout>

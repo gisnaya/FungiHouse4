@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class BerandaActivity extends AppCompatActivity {
-    TextView tv_suhu, tv_kelembapan, tv_waktu;
+    TextView tv_suhu, tv_kelembapan, tv_hour, tv_day;
     DatabaseReference reff;
     Button btnLanjut;
     LinearLayout lnSuhu, lnKelembapan;
@@ -32,18 +32,24 @@ public class BerandaActivity extends AppCompatActivity {
 
         tv_suhu=(TextView)findViewById(R.id.tv_suhu);
         tv_kelembapan=(TextView)findViewById(R.id.tv_kelembapan);
-        tv_waktu=(TextView)findViewById(R.id.tv_waktu);
+        tv_day=(TextView)findViewById(R.id.tv_day);
+        tv_hour=(TextView)findViewById(R.id.tv_hour);
 
-        reff=FirebaseDatabase.getInstance().getReference().child("dht22");
+
+        reff= (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("dht22");
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String temp=snapshot.child("temp").getValue().toString();
                 String hum=snapshot.child("hum").getValue().toString();
-                String time=snapshot.child("time").getValue().toString();
+                String day=snapshot.child("day").getValue().toString();
+                String hour=snapshot.child("hour").getValue().toString();
+
                 tv_suhu.setText(temp);
                 tv_kelembapan.setText(hum);
-                tv_waktu.setText(time);
+                tv_day.setText(day);
+                tv_hour.setText(hour);
+
             }
 
             @Override

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
@@ -26,6 +27,7 @@ import java.util.Map;
 public class GrafikActivity extends AppCompatActivity {
 
     private LineChart Linechart;
+    TextView tv_day;
     ArrayList<Entry> xData, yData;
     DatabaseReference mPostReference;
     ValueEventListener valueEventListener;
@@ -36,8 +38,9 @@ public class GrafikActivity extends AppCompatActivity {
         setContentView(R.layout.activity_grafik);
 
         Linechart = (LineChart) findViewById(R.id.grafik);
+        tv_day=(TextView)findViewById(R.id.tv_day);
 
-        mPostReference = FirebaseDatabase.getInstance().getReference("chart");
+        mPostReference = FirebaseDatabase.getInstance().getReference("history");
         mPostReference.addValueEventListener(valueEventListener= new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -47,12 +50,15 @@ public class GrafikActivity extends AppCompatActivity {
                 float i =0;
                 for (DataSnapshot ds : dataSnapshot.getChildren()){
                     i=i+1;
-                    String sV = ds.child("x").getValue().toString();
-                    String sV2 = ds.child("y").getValue().toString();
+                    String sV = ds.child("temp").getValue().toString();
+                    String sV2 = ds.child("hum").getValue().toString();
+                    String day=ds.child("day").getValue().toString();
                     Float sensorValue = Float.parseFloat(sV);
                     Float sensorValue2 = Float.parseFloat(sV2);
                     xData.add(new Entry(i,sensorValue));
                     yData.add(new Entry(i,sensorValue2));
+                    tv_day.setText(day);
+
                 }
                 LineData chartData = new LineData();
                 LineDataSet dataX = new LineDataSet(xData, "Suhu");

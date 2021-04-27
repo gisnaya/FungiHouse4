@@ -27,6 +27,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_day"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -34,7 +35,7 @@
             android:inputType="date"
             android:text="Senin, 01 Januari 2020"
             android:textColor="#FF934F"
-            android:textSize="20dp"
+            android:textSize="28sp"
             android:fontFamily="@font/preg"/>
 
         <com.github.mikephil.charting.charts.LineChart

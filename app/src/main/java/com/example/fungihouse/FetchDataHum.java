@@ -1,29 +1,36 @@
 package com.example.fungihouse;
 
 public class FetchDataHum {
-    Long hum;
-    String waktu;
+    Double hum;
+    String time;
+    String date;
 
-    public FetchDataHum() { }
 
-    public FetchDataHum(Long hum, String waktu) {
+    public FetchDataHum(Double hum, String time, String date) {
         this.hum = hum;
-        this.waktu = waktu;
+        this.time = time;
+        this.date = date;
     }
 
-    public Long getHum() {
+
+    public Double getHum() {
         return hum;
     }
 
-    public void setHum(Long hum) {
+    public void setHum(Double hum) {
         this.hum = hum;
     }
 
-    public String getWaktu() {
-        return waktu;
+    public String getTime() {
+        return time;
     }
 
-    public void setWaktu(String waktu) {
-        this.waktu = waktu;
+    public void setTime(String time) {
+        this.time = time;
     }
+
+    public String getDate() { return date; }
+
+    public void setDate(String date) { this.date = date; }
+
 }
