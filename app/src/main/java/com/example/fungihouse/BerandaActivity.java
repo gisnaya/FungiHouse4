@@ -3,6 +3,7 @@ package com.example.fungihouse;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,6 +18,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class BerandaActivity extends AppCompatActivity {
     TextView tv_suhu, tv_kelembapan, tv_hour, tv_day, tv_nama;
@@ -37,6 +44,8 @@ public class BerandaActivity extends AppCompatActivity {
         tv_day=(TextView)findViewById(R.id.tv_day);
         tv_hour=(TextView)findViewById(R.id.tv_hour);
         tv_nama = (TextView)findViewById(R.id.tv_username);
+
+        sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
         username = sharedPreferences.getString("username",null);
         tv_nama.setText(username);
 
@@ -44,10 +53,15 @@ public class BerandaActivity extends AppCompatActivity {
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String temp=snapshot.child("temp").getValue().toString();
-                String hum=snapshot.child("hum").getValue().toString();
-                String day=snapshot.child("day").getValue().toString();
-                String hour=snapshot.child("hour").getValue().toString();
+                String temp = snapshot.child("temp").getValue().toString();
+                String hum = snapshot.child("hum").getValue().toString();
+                String day = snapshot.child("day").getValue().toString();
+                String hour = snapshot.child("hour").getValue().toString();
+
+//                DateFormat dateFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
+//                Date date = new Date();
+//                String strDate = dateFormat.getDateInstance(dateFormat.FULL).format(date);
+//                reff.child("day").setValue(strDate);
 
                 tv_suhu.setText(temp);
                 tv_kelembapan.setText(hum);

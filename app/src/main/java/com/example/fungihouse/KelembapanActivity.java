@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -15,9 +17,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class KelembapanActivity extends AppCompatActivity {
 
@@ -27,6 +33,8 @@ public class KelembapanActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     HelperAdapterHum helperAdapterHum;
     DatabaseReference databaseReference;
+    String username;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,9 @@ public class KelembapanActivity extends AppCompatActivity {
         tv_time=(TextView)findViewById(R.id.tv_time);
         tv_day=(TextView)findViewById(R.id.tv_day);
         tv_date=(TextView)findViewById(R.id.tv_date);
+
+        sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
+        username = sharedPreferences.getString("username",null);
 
         recyclerView=findViewById(R.id.rv_hum);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -65,6 +76,11 @@ public class KelembapanActivity extends AppCompatActivity {
                 tv_time.setText(showData.getTime());
                 tv_date.setText(showData.getDate());
                 tv_day.setText(showData.getDate());
+
+//                DateFormat dateFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
+//                Date date = new Date();
+//                String strDate = dateFormat.getDateInstance(dateFormat.FULL).format(date);
+//                databaseReference.child("day").setValue(strDate);
             }
 
             @Override

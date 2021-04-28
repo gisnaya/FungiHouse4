@@ -23,7 +23,7 @@
             android:layout_marginTop="20dp"
             android:orientation="vertical">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Halo"
                 android:textColor="#FFFFEA"
@@ -32,7 +32,7 @@
                 android:fontFamily="@font/preg"/>
             <TextView
                 android:id="@+id/tv_username"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="(Username)"
                 android:textColor="#FFFFEA"
@@ -43,8 +43,8 @@
 
         <ImageView
             android:id="@+id/img_off"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:src="@drawable/ic_off" />
     </LinearLayout>

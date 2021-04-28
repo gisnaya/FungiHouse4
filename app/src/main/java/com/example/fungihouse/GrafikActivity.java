@@ -3,6 +3,8 @@ package com.example.fungihouse;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +23,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Map;
 
 public class GrafikActivity extends AppCompatActivity {
@@ -31,6 +37,8 @@ public class GrafikActivity extends AppCompatActivity {
     ArrayList<Entry> xData, yData;
     DatabaseReference mPostReference;
     ValueEventListener valueEventListener;
+    String username;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +86,8 @@ public class GrafikActivity extends AppCompatActivity {
                 Linechart.notifyDataSetChanged();
                 Linechart.invalidate();
 
+                sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
+                username = sharedPreferences.getString("username",null);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
