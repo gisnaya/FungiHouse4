@@ -1,6 +1,8 @@
 package com.example.fungihouse;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,11 +22,11 @@ import com.google.firebase.database.ValueEventListener;
 public class UsernameActivity extends AppCompatActivity {
     Button btnSelesai;
     EditText username;
-
-
+    SharedPreferences sharedPreferences;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     UsernameInfo usernameInfo;
+    String id, user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,7 @@ public class UsernameActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 firebaseDatabase = FirebaseDatabase.getInstance();
-                databaseReference = firebaseDatabase.getReference("Username");
+                databaseReference = firebaseDatabase.getReference("user");
 
                 String name = username.getText().toString();
 
@@ -59,13 +61,19 @@ public class UsernameActivity extends AppCompatActivity {
                     Toast.makeText(UsernameActivity.this, "Masukkan Username", Toast.LENGTH_SHORT).show();
                     return;
                 }else{
-                    addDataOnFirebase(name);
-                    databaseReference.child(name).setValue(usernameInfo);
+                    sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    id = sharedPreferences.getString("id", null);
+                    databaseReference.child(id).child("id").setValue(id);
+                    databaseReference.child(id).child("username").setValue(name);
+                    editor.putString("username", name);
+                    editor.putBoolean("sudahLogin", true);
+                    editor.apply();
+//                    addDataOnFirebase(name);
+//                    databaseReference.child(name).setValue(usernameInfo);
+                    Intent intent = new Intent(getApplicationContext(), BerandaActivity.class);
+                    startActivity(intent);
                 }
-
-
-                Intent intent = new Intent(getApplicationContext(), BerandaActivity.class);
-                startActivity(intent);
             }
 
             private void addDataOnFirebase(String name) {

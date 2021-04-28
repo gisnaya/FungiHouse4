@@ -3,7 +3,9 @@ package com.example.fungihouse;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,17 +23,24 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
 public class OTPActivity extends AppCompatActivity {
     private EditText inputCode1, inputCode2, inputCode3, inputCode4, inputCode5, inputCode6;
     private String verificationId;
+    FirebaseDatabase db;
+    DatabaseReference databaseReference;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_o_t_p);
+        db = FirebaseDatabase.getInstance();
+        databaseReference = db.getReference("user");
 
         inputCode1 = findViewById(R.id.inputCode1);
         inputCode2 = findViewById(R.id.inputCode2);
@@ -81,6 +90,12 @@ public class OTPActivity extends AppCompatActivity {
                                     progressBar.setVisibility(View.GONE);
                                     buttonOtp.setVisibility(View.VISIBLE);
                                     if (task.isSuccessful()){
+                                        String mobile = "+62" + getIntent().getStringExtra("mobile");
+                                        databaseReference.child(mobile).child("id").setValue(mobile);
+                                        sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("id", mobile);
+                                        editor.apply();
                                         Intent intent = new Intent(getApplicationContext(), UsernameActivity.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);

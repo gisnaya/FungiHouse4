@@ -26,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SignupActivity extends AppCompatActivity {
     TextView txtSignup;
+    String phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

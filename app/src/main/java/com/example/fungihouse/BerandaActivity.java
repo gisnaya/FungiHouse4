@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,12 +19,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class BerandaActivity extends AppCompatActivity {
-    TextView tv_suhu, tv_kelembapan, tv_hour, tv_day;
+    TextView tv_suhu, tv_kelembapan, tv_hour, tv_day, tv_nama;
     DatabaseReference reff;
     Button btnLanjut;
     LinearLayout lnSuhu, lnKelembapan;
     ImageView img_off;
-
+    String username;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,9 @@ public class BerandaActivity extends AppCompatActivity {
         tv_kelembapan=(TextView)findViewById(R.id.tv_kelembapan);
         tv_day=(TextView)findViewById(R.id.tv_day);
         tv_hour=(TextView)findViewById(R.id.tv_hour);
-
+        tv_nama = (TextView)findViewById(R.id.tv_username);
+        username = sharedPreferences.getString("username",null);
+        tv_nama.setText(username);
 
         reff= (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("dht22");
         reff.addValueEventListener(new ValueEventListener() {
