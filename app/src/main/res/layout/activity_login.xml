@@ -20,12 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:fontFamily="@font/preg"
             android:gravity="center_horizontal"
             android:text="Log In"
             android:textColor="#FF934F"
-            android:textSize="60sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/preg"/>
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,18 +39,19 @@
                 android:gravity="center_horizontal"
                 android:text="Masukkan"
                 android:textColor="#FF934F"
-                android:textSize="35sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/preg"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Nomor Handphone"
-                android:textColor="#FF934F"
-                android:textSize="35sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/preg"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/preg"
+            android:gravity="center_horizontal"
+            android:text="Nomor Handphone"
+            android:textColor="#FF934F"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,16 +72,16 @@
                 android:id="@+id/nohp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:fontFamily="@font/preg"
                 android:gravity="center"
                 android:hint="No Handphone"
                 android:inputType="phone"
-                android:maxLength="15"
-                android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:textSize="30sp"
-                android:maxLines="1"
                 android:lines="1"
-                android:fontFamily="@font/preg"/>
+                android:maxLength="15"
+                android:maxLines="1"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="25sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -99,7 +100,7 @@
                 android:background="@drawable/button_background"
                 android:text="Masuk"
                 android:textColor="#FFFFFF"
-                android:textSize="26dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:fontFamily="@font/preg"/>
 
@@ -113,7 +114,7 @@
                 android:gravity="center"
                 android:text="Tidak memiliki akun? Klik di sini"
                 android:textColor="#FF934F"
-                android:textSize="23sp" />
+                android:textSize="20sp" />
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyle"

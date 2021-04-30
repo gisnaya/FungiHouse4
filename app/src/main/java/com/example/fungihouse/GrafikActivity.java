@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -39,6 +42,7 @@ public class GrafikActivity extends AppCompatActivity {
     ValueEventListener valueEventListener;
     String username;
     SharedPreferences sharedPreferences;
+    ImageView img_chevron_left;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +96,14 @@ public class GrafikActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+        img_chevron_left = findViewById(R.id.img_chevron_left);
+        img_chevron_left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), BerandaActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -7,45 +7,98 @@
     android:orientation="vertical"
     android:background="#FF934F"
     tools:context=".GrafikActivity">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="Grafik"
-        android:textStyle="bold"
-        android:textSize="44dp"
-        android:textColor="#FFFFFF"
-        android:gravity="center"
-        android:fontFamily="@font/preg"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/soft_orange_rounded_top"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tv_day"
-            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/img_chevron_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_chevron_left" />
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:ems="10"
-            android:inputType="date"
-            android:text="Senin, 01 Januari 2020"
-            android:textColor="#FF934F"
-            android:textSize="28sp"
-            android:fontFamily="@font/preg"/>
+            android:layout_marginHorizontal="108dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/preg"
+                android:text="Grafik"
+                android:textColor="#FFFFEA"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="3dp"
+                android:src="@drawable/ic_bar_chart" />
+        </LinearLayout>
 
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/grafik"
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            tools:visibility="gone" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="50dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Grafik"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:fontFamily="@font/preg"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="649dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/soft_orange_rounded_top"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:ems="10"
+                    android:fontFamily="@font/preg"
+                    android:gravity="center"
+                    android:inputType="date"
+                    android:text="Senin, 01 Januari 2020"
+                    android:textColor="#FF934F"
+                    android:textSize="18sp" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/grafik"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="50dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
 </LinearLayout>

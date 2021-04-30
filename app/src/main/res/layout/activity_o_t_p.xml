@@ -23,7 +23,7 @@
             android:gravity="center_horizontal"
             android:text="OTP"
             android:textColor="#FF934F"
-            android:textSize="60sp"
+            android:textSize="35sp"
             android:textStyle="bold"
             android:fontFamily="@font/preg"/>
 
@@ -39,7 +39,7 @@
                 android:gravity="center_horizontal"
                 android:text="Masukkan"
                 android:textColor="#FF934F"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/preg"/>
             <TextView
@@ -48,7 +48,7 @@
                 android:gravity="center_horizontal"
                 android:text="Kode Verifikasi"
                 android:textColor="#FF934F"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/preg"/>
         <LinearLayout
@@ -65,7 +65,7 @@
                 android:background="@drawable/orange_rounded_full"
                 android:maxLength="1"
                 android:textColor="#FFFFFF"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:fontFamily="@font/preg"
@@ -81,7 +81,7 @@
                 android:background="@drawable/orange_rounded_full"
                 android:maxLength="1"
                 android:textColor="#FFFFFF"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:fontFamily="@font/preg"
@@ -97,7 +97,7 @@
                 android:background="@drawable/orange_rounded_full"
                 android:maxLength="1"
                 android:textColor="#FFFFFF"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:fontFamily="@font/preg"
@@ -113,7 +113,7 @@
                 android:background="@drawable/orange_rounded_full"
                 android:maxLength="1"
                 android:textColor="#FFFFFF"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:fontFamily="@font/preg"
@@ -129,7 +129,7 @@
                 android:background="@drawable/orange_rounded_full"
                 android:maxLength="1"
                 android:textColor="#FFFFFF"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:fontFamily="@font/preg"
@@ -145,7 +145,7 @@
                 android:background="@drawable/orange_rounded_full"
                 android:maxLength="1"
                 android:textColor="#FFFFFF"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:fontFamily="@font/preg"
@@ -169,7 +169,7 @@
                 android:background="@drawable/button_background"
                 android:text="Lanjut"
                 android:textColor="#FFFFFF"
-                android:textSize="26dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:fontFamily="@font/preg"/>
             <TextView
@@ -181,7 +181,7 @@
                 android:text="Kirim ulang OTP? Klik di sini"
                 android:textColor="#FF934F"
                 android:gravity="center"
-                android:textSize="23sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/preg"/>
             <ProgressBar
                 android:id="@+id/progressBar"

@@ -20,7 +20,7 @@
             android:layout_centerHorizontal="true"
             android:text="Selamat"
             android:textColor="#FF934F"
-            android:textSize="60dp"
+            android:textSize="40dp"
             android:textStyle="bold"
             android:fontFamily="@font/preg"/>
 
@@ -30,7 +30,7 @@
             android:layout_centerVertical="true"
             android:text="Datang"
             android:textColor="#FF934F"
-            android:textSize="60dp"
+            android:textSize="40dp"
             android:textStyle="bold"
             android:fontFamily="@font/preg"/>
 
@@ -43,7 +43,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
             android:text="Mulai"
-            android:textSize="24dp"
+            android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:background="@drawable/button_background"

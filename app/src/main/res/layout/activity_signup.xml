@@ -23,7 +23,7 @@
             android:gravity="center_horizontal"
             android:text="Sign Up"
             android:textColor="#FF934F"
-            android:textSize="60sp"
+            android:textSize="35sp"
             android:textStyle="bold"
             android:fontFamily="@font/preg"/>
 
@@ -53,7 +53,7 @@
                 android:maxLength="15"
                 android:textColorHint="#FFFFFF"
                 android:textColor="#FFFFFF"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:maxLines="1"
                 android:lines="1"
                 android:fontFamily="@font/preg"/>
@@ -89,7 +89,7 @@
                 android:gravity="center"
                 android:text="Sudah memiliki akun? Klik di sini"
                 android:textColor="#FF934F"
-                android:textSize="22sp" />
+                android:textSize="20sp" />
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyle"

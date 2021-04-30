@@ -30,7 +30,7 @@ public class BerandaActivity extends AppCompatActivity {
     DatabaseReference reff;
     Button btnLanjut;
     LinearLayout lnSuhu, lnKelembapan;
-    ImageView img_off;
+    ImageView img_off, img_info;
     String username;
     SharedPreferences sharedPreferences;
 
@@ -108,6 +108,13 @@ public class BerandaActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        img_info = findViewById(R.id.img_info);
+        img_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
