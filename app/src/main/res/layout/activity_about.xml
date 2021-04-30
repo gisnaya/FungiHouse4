@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FF934F"
+    tools:context=".BerandaActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/img_chevron_left"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_chevron_left" />
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginHorizontal="65dp">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:fontFamily="@font/preg"
+                   android:text="Tentang Aplikasi"
+                   android:textColor="#FFFFEA"
+                   android:textSize="18sp"
+                   android:textStyle="bold" />
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:layout_margin="3dp"
+                   android:src="@drawable/ic_info" />
+           </LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:visibility="gone"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/preg"
+                        android:text="Tentang Aplikasi"
+                        android:textColor="#FFFFEA"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:fontFamily="@font/preg"
+                        android:text="App v1.0"
+                        android:textColor="#FFFFEA"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/soft_orange_rounded_top"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
+                    android:textColor="#FF934F"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/preg"
+                    android:text="Aplikasi Fungi House merupakan aplikasi monitoring ruang budidaya jamur tiram yang terletak di Desa Banding Kabupaten Semarang. Tujuan dibuatnya aplikasi ini yaitu, petani dapat memonitoring ruang budidaya jamur tiram di mana pun dan kapan pun. dengan menggunakan aplikasi ini ruang budidaya jamur tiram dapat selalu termonitor suhu ruang, kelembapan ruang maupun penyiraman pada jamur tiram. pada aplikasi ini terdapat menu informasi berupa suhu ruang setiap 5 detik yang berada pada ruang budidaya selama 1 hari. Selain suhu ruang, ada pula kelemabapan ruang. Di samping itu pada aplikasi ini terdapat grafik suhu serta kelembapan setiap harinya. Pada aplikasi ini juga memberikan informasi kapan ruang budidaya tersebut telah terjadi penyiraman. "/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/preg"
+                    android:text="Kontak Dukungan : "
+                    android:textColor="#FF934F"
+                    android:textSize="15dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/preg"
+                    android:text="Telepon : 085320238853 "
+                    android:textColor="#FF934F"
+                    android:textSize="15dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/preg"
+                    android:text="Email : gisnaya.avisyah@gmail.com"
+                    android:textColor="#FF934F"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
