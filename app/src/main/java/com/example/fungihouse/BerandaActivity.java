@@ -63,8 +63,8 @@ public class BerandaActivity extends AppCompatActivity {
 //                String strDate = dateFormat.getDateInstance(dateFormat.FULL).format(date);
 //                reff.child("day").setValue(strDate);
 
-                tv_suhu.setText(temp);
-                tv_kelembapan.setText(hum);
+                tv_suhu.setText(temp+"\u2103");
+                tv_kelembapan.setText(hum+"%");
                 tv_day.setText(day);
                 tv_hour.setText(hour);
 
