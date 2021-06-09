@@ -3,6 +3,7 @@ package com.example.fungihouse;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,6 +37,12 @@ public class HelperAdapterHum extends RecyclerView.Adapter {
         FetchDataHum fetchData=fetchDataList.get(position);
         viewHolderClass.hum.setText(fetchData.getHum().toString());
         viewHolderClass.time.setText(fetchData.getTime());
+        if (fetchData.getHum()<79){
+            viewHolderClass.siram.setVisibility(View.VISIBLE);
+        }
+        else {
+            viewHolderClass.siram.setVisibility(View.INVISIBLE);
+        }
 
     }
 
@@ -46,11 +53,12 @@ public class HelperAdapterHum extends RecyclerView.Adapter {
 
     public class ViewHolderClass extends RecyclerView.ViewHolder{
         TextView hum, time;
-
+        ImageView siram;
         public ViewHolderClass(@NonNull View itemView) {
             super(itemView);
             hum=itemView.findViewById(R.id.txt_hum);
             time=itemView.findViewById(R.id.txt_time);
+            siram=itemView.findViewById(R.id.ic_hose);
         }
     }
 }

@@ -27,6 +27,10 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
+
+import static com.example.fungihouse.DataInterface.dayFormat;
+import static com.example.fungihouse.DataInterface.hourFormat;
 
 public class KelembapanActivity extends AppCompatActivity {
 
@@ -38,13 +42,14 @@ public class KelembapanActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     String username;
     SharedPreferences sharedPreferences;
-    ImageView img_chevron_left;
+    ImageView img_chevron_left, gauge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kelembapan);
 
+        gauge = findViewById(R.id.gaugemeter);
         tv_hum=(TextView)findViewById(R.id.tv_hum);
         tv_time=(TextView)findViewById(R.id.tv_time);
         tv_day=(TextView)findViewById(R.id.tv_day);
@@ -57,15 +62,22 @@ public class KelembapanActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fetchDataHum=new ArrayList<>();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("history");
-        databaseReference.addValueEventListener(new ValueEventListener() {
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+        String dateNow = dateFormat.format(new Date());
+        databaseReference = FirebaseDatabase.getInstance().getReference("history/" +dateNow);
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     try {
                         Double hum = postSnapshot.child("hum").getValue(Double.class);
-                        String hour = postSnapshot.child("hour").getValue(String.class);
-                        String day = postSnapshot.child("day").getValue(String.class);
+                        Long timestamp = postSnapshot.child("timestamp").getValue(long.class);
+                        Date date = new Date(timestamp * 1000L);
+                        dayFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+                        hourFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+                        String hour = hourFormat.format(date);
+                        String day = dayFormat.format(date);
                         Log.d(TAG, "hum : "+hum+" hour : "+hour+" day : "+day);
                         fetchDataHum.add(new FetchDataHum(hum, hour, day));
                     }catch (Exception e){
@@ -75,11 +87,23 @@ public class KelembapanActivity extends AppCompatActivity {
                 Collections.reverse(fetchDataHum);
                 helperAdapterHum = new HelperAdapterHum(fetchDataHum);
                 recyclerView.setAdapter(helperAdapterHum);
-                FetchDataHum showData = fetchDataHum.get(0);
-                tv_hum.setText(showData.getHum().toString());
-                tv_time.setText(showData.getTime());
-                tv_date.setText(showData.getDate());
-                tv_day.setText(showData.getDate());
+                Log.i("sqw", String.valueOf(fetchDataHum.size()));
+                if (fetchDataHum.size() > 0) {
+                    FetchDataHum showData = fetchDataHum.get(0);
+                    tv_hum.setText(showData.getHum().toString()+"%");
+                    tv_time.setText(showData.getTime());
+                    tv_date.setText(showData.getDate());
+                    tv_day.setText(showData.getDate());
+                    gauge.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                } else {
+                    tv_date.setText(dayFormat.format(new Date()));
+                    tv_day.setText("Data Belum Tersedia");
+                    tv_time.setText("-");
+                    tv_hum.setText("-");
+                    gauge.setVisibility(View.INVISIBLE);
+                    recyclerView.setVisibility(View.INVISIBLE);
+                }
 
 //                DateFormat dateFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
 //                Date date = new Date();

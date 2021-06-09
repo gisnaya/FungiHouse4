@@ -2,6 +2,7 @@ package com.example.fungihouse;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.solver.state.State;
 
 import android.content.Context;
 import android.content.Intent;
@@ -37,14 +38,20 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
+import static com.example.fungihouse.DataInterface.dateFormat;
+import static com.example.fungihouse.DataInterface.dayFormat;
+import static com.example.fungihouse.DataInterface.englishDateFormat;
 import static com.example.fungihouse.DataInterface.formateDateFromstring;
 import static com.example.fungihouse.DataInterface.formatwaktu;
 import static com.example.fungihouse.DataInterface.grafikurl;
+import static com.example.fungihouse.DataInterface.hourFormat;
 import static com.example.fungihouse.DataInterface.myDateFormat;
 
 public class GrafikActivity extends AppCompatActivity {
@@ -60,11 +67,19 @@ public class GrafikActivity extends AppCompatActivity {
 
     LineChart lineChart;
     LineDataSet lineDataSet = new LineDataSet(null,null);
+    LineDataSet lineDataSet2 = new LineDataSet(null,null);
     ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
     LineData lineData;
     float yvalue;
     String extra;
     LimitLine upper, lower;
+
+    DatabaseReference databaseReference;
+    List<FetchData> fetchData;
+    List<FetchDataHum> fetchDataHum;
+    List<ChartModel> chartModelList;
+    HelperAdapter helperAdapter;
+    HelperAdapterHum helperAdapterHum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +90,6 @@ public class GrafikActivity extends AppCompatActivity {
         tv_day = (TextView) findViewById(R.id.tv_day);
         lineChart.setNoDataText("Data Grafik Tidak Tersedia.");
 
-        mPostReference = FirebaseDatabase.getInstance().getReference("history");
 //        mPostReference.addValueEventListener(valueEventListener = new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -122,45 +136,54 @@ public class GrafikActivity extends AppCompatActivity {
 //
 //            }
 //        });
-        mPostReference.addValueEventListener(valueEventListener = new ValueEventListener() {
+        fetchDataHum = new ArrayList<>();
+        fetchData = new ArrayList<>();
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+        String dateNow = dateFormat.format(new Date());
+        databaseReference = FirebaseDatabase.getInstance().getReference("history/");// +dateNow);
+        databaseReference.child("20210531").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ArrayList<Entry> DataVals = new ArrayList<Entry>();
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if (ds.child("day").getValue().toString() != null){
-                        String sV = ds.child("temp").getValue().toString();
-                        String sV2 = ds.child("hum").getValue().toString();
-                        String day = ds.child("day").getValue().toString().replace("/", "");
-                        Long newDay = Long.parseLong(day);
-                        Float sensorValue = Float.parseFloat(sV);
-                        Float sensorValue2 = Float.parseFloat(sV2);
-                        yvalue = sensorValue;
-//                        yvalue = sensorValue2;
-                        Date newDate = Calendar.getInstance().getTime();
-                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM yyyy");
-                        try {
-                            newDate = simpleDateFormat.parse(day.toString());
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                        DataVals.add(new Entry(newDay, yvalue));
+                ArrayList<Entry> DataVals2 = new ArrayList<Entry>();
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    ChartModel chartModel = postSnapshot.getValue(ChartModel.class);
+                    try {
+                        Float hum = postSnapshot.child("hum").getValue(Float.class);
+                        Float temp = postSnapshot.child("temp").getValue(Float.class);
+                        Long timestamp = postSnapshot.child("timestamp").getValue(long.class);
 
-                        tv_day.setText(newDate.toString());
-                        Log.i("hiya", "iki : "+day);
+                        chartModelList.add(new ChartModel(hum, temp, timestamp));
+//                        Date date = new Date(timestamp * 1000L);
+//                        dayFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+//                        hourFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+//                        String waktu = hourFormat.format(date);
+//                        String day = dayFormat.format(date);
+//                        Long hour = Long.parseLong(waktu);
+
+                    }catch (Exception e){
+                        Log.d("erorki", "exception: "+e);
                     }
-                    else {
-                        DataVals.add(null);
-                    }
-                    ShowChart(DataVals);
+
+                    if (chartModel != null){
+                        yvalue = chartModel.getTemp();
+                        DataVals.add(new Entry(chartModel.getTimestamp(), yvalue));
+                        DataVals2.add(new Entry(chartModel.getTimestamp(), chartModel.getHum()));
+
+                    } else
+                        DataVals.add(null); DataVals2.add(null);
                 }
+                ShowChart(DataVals, DataVals2);
 
-                sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
-                username = sharedPreferences.getString("username", null);
+
+//                DateFormat dateFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
+//                Date date = new Date();
+//                String strDate = dateFormat.getDateInstance(dateFormat.FULL).format(date);
+//                databaseReference.child("day").setValue(strDate);
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
+            public void onCancelled(@NonNull DatabaseError error) {
             }
         });
 
@@ -174,9 +197,9 @@ public class GrafikActivity extends AppCompatActivity {
         });
 
     }
-    private void ShowChart (ArrayList < Entry > DataVals) {
-//        MyMarkerView mv = new MyMarkerView(GrafikActivity.this, R.layout.my_marker_view);
-//        lineChart.setMarkerView(mv);
+    private void ShowChart (ArrayList <Entry> DataVals, ArrayList <Entry> DataVals2) {
+        MyMarkerView mv = new MyMarkerView(GrafikActivity.this, R.layout.my_marker_view);
+        lineChart.setMarkerView(mv);
 
         YAxis leftaxisy = lineChart.getAxisLeft();
         leftaxisy.removeAllLimitLines();
@@ -191,17 +214,14 @@ public class GrafikActivity extends AppCompatActivity {
 
         XAxis xAxis = lineChart.getXAxis();
         xAxis.enableGridDashedLine(10f, 10f, 0f);
-        xAxis.setLabelCount(10,true);
-        xAxis.setLabelRotationAngle(30f);
-        xAxis.setGranularityEnabled(true);
-        xAxis.setGranularity(2f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
         xAxis.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
-                Date date = new Date((long)value);
-                return DataInterface.DateFormat.format(date);
+                Date date = new Date((long)value * 1000L);
+                formatwaktu.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+                return formatwaktu.format(date);
             }
         });
 
@@ -215,15 +235,29 @@ public class GrafikActivity extends AppCompatActivity {
         lineDataSet.setValueTextSize(0f);
         lineDataSet.setDrawFilled(true);
         lineDataSet.setFormLineWidth(1f);
-        lineDataSet.setMode(LineDataSet.Mode.LINEAR);
+        lineDataSet.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);
         lineDataSet.setFormLineDashEffect(new DashPathEffect(new float[]{10f, 5f}, 0f));
         lineDataSet.setFormSize(15.f);
-        lineDataSet.setFillColor(Color.rgb(3, 169, 244));
+        lineDataSet.setFillColor(Color.rgb(4, 129, 222));
+        lineDataSet2.setValues(DataVals2);
+        lineDataSet2.setDrawIcons(false);
+        lineDataSet2.setColor(Color.rgb(4, 129, 222));
+        lineDataSet2.setCircleColor(Color.rgb(4, 129, 222));
+        lineDataSet2.setLineWidth(2f);
+        lineDataSet2.setCircleRadius(4f);
+        lineDataSet2.setDrawCircleHole(false);
+        lineDataSet2.setValueTextSize(0f);
+        lineDataSet2.setDrawFilled(true);
+        lineDataSet2.setFormLineWidth(1f);
+        lineDataSet2.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);
+        lineDataSet2.setFormLineDashEffect(new DashPathEffect(new float[]{10f, 5f}, 0f));
+        lineDataSet2.setFormSize(15.f);
+        lineDataSet2.setFillColor(Color.rgb(4, 129, 222));
 
         iLineDataSets.clear();
         iLineDataSets.add(lineDataSet);
         lineData = new LineData(iLineDataSets);
-//        String tanggal = formateDateFromstring("yyyy-MM-dd", "dd, MMM yyyy", grafikurl);
+//        String tanggal = formateDateFromstring(englishDateFormat, dateFormat);
 //        Description description = lineChart.getDescription();
 //        description.setText("Waktu (" + tanggal + ")");
 //        description.setTextSize(12f);

@@ -3,12 +3,14 @@ package com.example.fungihouse;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,6 +27,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import static com.example.fungihouse.DataInterface.dayFormat;
+import static com.example.fungihouse.DataInterface.englishDateFormat;
+import static com.example.fungihouse.DataInterface.formateDateFromstring;
+
 public class BerandaActivity extends AppCompatActivity {
     TextView tv_suhu, tv_kelembapan, tv_hour, tv_day, tv_nama;
     DatabaseReference reff;
@@ -39,23 +45,23 @@ public class BerandaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beranda);
 
-        tv_suhu=(TextView)findViewById(R.id.tv_suhu);
-        tv_kelembapan=(TextView)findViewById(R.id.tv_kelembapan);
-        tv_day=(TextView)findViewById(R.id.tv_day);
-        tv_hour=(TextView)findViewById(R.id.tv_hour);
-        tv_nama = (TextView)findViewById(R.id.tv_username);
+        tv_suhu = (TextView) findViewById(R.id.tv_suhu);
+        tv_kelembapan = (TextView) findViewById(R.id.tv_kelembapan);
+        tv_day = (TextView) findViewById(R.id.tv_day);
+        tv_hour = (TextView) findViewById(R.id.tv_hour);
+        tv_nama = (TextView) findViewById(R.id.tv_username);
 
         sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
-        username = sharedPreferences.getString("username",null);
+        username = sharedPreferences.getString("username", null);
         tv_nama.setText(username);
 
-        reff= (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("dht22");
+        reff = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("dht22");
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String temp = snapshot.child("temp").getValue().toString();
                 String hum = snapshot.child("hum").getValue().toString();
-                String day = snapshot.child("day").getValue().toString();
+                String day = formateDateFromstring(englishDateFormat, dayFormat, snapshot.child("day").getValue().toString());
                 String hour = snapshot.child("hour").getValue().toString();
 
 //                DateFormat dateFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
@@ -63,8 +69,8 @@ public class BerandaActivity extends AppCompatActivity {
 //                String strDate = dateFormat.getDateInstance(dateFormat.FULL).format(date);
 //                reff.child("day").setValue(strDate);
 
-                tv_suhu.setText(temp+"\u2103");
-                tv_kelembapan.setText(hum+"%");
+                tv_suhu.setText(temp + "\u2103");
+                tv_kelembapan.setText(hum + "%");
                 tv_day.setText(day);
                 tv_hour.setText(hour);
 

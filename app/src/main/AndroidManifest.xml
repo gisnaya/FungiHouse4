@@ -14,7 +14,10 @@
         android:roundIcon="@drawable/ic_splash1"
         android:supportsRtl="true"
         android:theme="@style/Theme.FungiHouse">
-        <activity android:name=".GrafikActivity"></activity>
+        <activity android:name=".GrafikActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape">
+        </activity>
         <activity android:name=".KelembapanActivity" />
         <activity android:name=".SuhuActivity" />
         <activity android:name=".BerandaActivity" />
