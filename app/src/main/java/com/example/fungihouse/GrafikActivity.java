@@ -66,11 +66,15 @@ public class GrafikActivity extends AppCompatActivity {
     ImageView img_chevron_left;
 
     LineChart lineChart;
+    LineChart lineChart2;
     LineDataSet lineDataSet = new LineDataSet(null,null);
     LineDataSet lineDataSet2 = new LineDataSet(null,null);
     ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
+    ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<>();
     LineData lineData;
+    LineData lineData2;
     float yvalue;
+    float yvalue2;
     String extra;
     LimitLine upper, lower;
 
@@ -80,6 +84,7 @@ public class GrafikActivity extends AppCompatActivity {
     List<ChartModel> chartModelList;
     HelperAdapter helperAdapter;
     HelperAdapterHum helperAdapterHum;
+    String getDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,61 +92,20 @@ public class GrafikActivity extends AppCompatActivity {
         setContentView(R.layout.activity_grafik);
 
         lineChart = (LineChart) findViewById(R.id.grafik);
+        lineChart2 = (LineChart) findViewById(R.id.grafik2);
         tv_day = (TextView) findViewById(R.id.tv_day);
         lineChart.setNoDataText("Data Grafik Tidak Tersedia.");
-
-//        mPostReference.addValueEventListener(valueEventListener = new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                xData = new ArrayList<>();
-//                yData = new ArrayList<>();
-//                float i = 0;
-//                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                    i = i + 1;
-//                    String sV = ds.child("temp").getValue().toString();
-//                    String sV2 = ds.child("hum").getValue().toString();
-//                    String day = ds.child("day").getValue().toString();
-//                    Float sensorValue = Float.parseFloat(sV);
-//                    Float sensorValue2 = Float.parseFloat(sV2);
-//                    xData.add(new Entry(i, sensorValue));
-//                    yData.add(new Entry(i, sensorValue2));
-//                    tv_day.setText(day);
-//
-//                }
-//                LineData chartData = new LineData();
-//                LineDataSet dataX = new LineDataSet(xData, "Suhu");
-//                LineDataSet dataY = new LineDataSet(yData, "Kelembapan");
-//                dataX.setColor(Color.BLUE);
-//                dataY.setColor(Color.RED);
-//                dataX.setCircleHoleColor(Color.BLUE);
-//                dataY.setCircleHoleColor(Color.RED);
-//                dataX.setValueTextSize(15);
-//                dataY.setValueTextSize(15);
-//                dataX.setValueTextColor(Color.BLUE);
-//                dataY.setValueTextColor(Color.RED);
-//                chartData.addDataSet(dataX);
-//                chartData.addDataSet(dataY);
-//
-//                Linechart.setData(chartData);
-//                Linechart.notifyDataSetChanged();
-//                Linechart.invalidate();
-//
-//                sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
-//                username = sharedPreferences.getString("username", null);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+        lineChart2.setNoDataText("Data Grafik Tidak Tersedia");
         fetchDataHum = new ArrayList<>();
         fetchData = new ArrayList<>();
+        Bundle bundle = getIntent().getExtras();
+        getDate = bundle.getString("date");
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+        String day = formateDateFromstring(englishDateFormat, dayFormat, getDate);
+        tv_day.setText(day);
         String dateNow = dateFormat.format(new Date());
         databaseReference = FirebaseDatabase.getInstance().getReference("history/");// +dateNow);
-        databaseReference.child("20210531").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child(getDate).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ArrayList<Entry> DataVals = new ArrayList<Entry>();
@@ -152,28 +116,24 @@ public class GrafikActivity extends AppCompatActivity {
                         Float hum = postSnapshot.child("hum").getValue(Float.class);
                         Float temp = postSnapshot.child("temp").getValue(Float.class);
                         Long timestamp = postSnapshot.child("timestamp").getValue(long.class);
-
                         chartModelList.add(new ChartModel(hum, temp, timestamp));
-//                        Date date = new Date(timestamp * 1000L);
-//                        dayFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
-//                        hourFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
-//                        String waktu = hourFormat.format(date);
-//                        String day = dayFormat.format(date);
-//                        Long hour = Long.parseLong(waktu);
-
                     }catch (Exception e){
                         Log.d("erorki", "exception: "+e);
                     }
 
                     if (chartModel != null){
                         yvalue = chartModel.getTemp();
+                        yvalue2 = chartModel.getHum();
                         DataVals.add(new Entry(chartModel.getTimestamp(), yvalue));
-                        DataVals2.add(new Entry(chartModel.getTimestamp(), chartModel.getHum()));
+                        DataVals2.add(new Entry(chartModel.getTimestamp(), yvalue2));
 
-                    } else
-                        DataVals.add(null); DataVals2.add(null);
+                    } else {
+                        DataVals.add(null);
+                        DataVals2.add(null);
+                    }
                 }
-                ShowChart(DataVals, DataVals2);
+                ShowChart(DataVals);
+                ShowChart2(DataVals2);
 
 
 //                DateFormat dateFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
@@ -197,9 +157,9 @@ public class GrafikActivity extends AppCompatActivity {
         });
 
     }
-    private void ShowChart (ArrayList <Entry> DataVals, ArrayList <Entry> DataVals2) {
-        MyMarkerView mv = new MyMarkerView(GrafikActivity.this, R.layout.my_marker_view);
-        lineChart.setMarkerView(mv);
+    private void ShowChart (ArrayList <Entry> DataVals) {
+//        MyMarkerView mv = new MyMarkerView(GrafikActivity.this, R.layout.my_marker_view);
+//        lineChart.setMarkerView(mv);
 
         YAxis leftaxisy = lineChart.getAxisLeft();
         leftaxisy.removeAllLimitLines();
@@ -225,6 +185,8 @@ public class GrafikActivity extends AppCompatActivity {
             }
         });
 
+        String label = "Suhu Ruang";
+        LineDataSet lineDataSet = new LineDataSet(DataVals, label);
         lineDataSet.setValues(DataVals);
         lineDataSet.setDrawIcons(false);
         lineDataSet.setColor(Color.rgb(3, 169, 244));
@@ -239,6 +201,56 @@ public class GrafikActivity extends AppCompatActivity {
         lineDataSet.setFormLineDashEffect(new DashPathEffect(new float[]{10f, 5f}, 0f));
         lineDataSet.setFormSize(15.f);
         lineDataSet.setFillColor(Color.rgb(4, 129, 222));
+        iLineDataSets.clear();
+        iLineDataSets.add(lineDataSet);
+        lineData = new LineData(iLineDataSets);
+//        String tanggal = formateDateFromstring(englishDateFormat, dateFormat);
+//        Description description = lineChart.getDescription();
+//        description.setText("Waktu (" + tanggal + ")");
+//        description.setTextSize(12f);
+
+        lineChart.clear();
+        lineChart.setData(lineData);
+        lineChart.setTouchEnabled(true);
+        lineChart.setDragEnabled(true);
+        lineChart.setScaleEnabled(true);
+        lineChart.setHorizontalScrollBarEnabled(true);
+        lineChart.setPinchZoom(false);
+        lineChart.setDrawGridBackground(true);
+        lineChart.getDescription().setEnabled(false);
+        lineChart.getAxisRight().setEnabled(false);
+        lineChart.animateX(2000, Easing.EaseInOutBounce);
+        lineChart.invalidate();
+    }
+    private void ShowChart2 (ArrayList <Entry> DataVals2) {
+//        MyMarkerView mv = new MyMarkerView(GrafikActivity.this, R.layout.my_marker_view);
+//        lineChart2.setMarkerView(mv);
+
+        YAxis leftaxisy = lineChart2.getAxisLeft();
+        leftaxisy.removeAllLimitLines();
+//        leftaxisy.addLimitLine(upper);
+//        leftaxisy.addLimitLine(lower);
+
+        leftaxisy.enableGridDashedLine(10f, 10f, 0f);
+        leftaxisy.setDrawZeroLine(true);
+        leftaxisy.setDrawLimitLinesBehindData(false);
+        leftaxisy.setLabelCount(7, true);
+        leftaxisy.setDrawGridLines(false);
+
+        XAxis xAxis = lineChart2.getXAxis();
+        xAxis.enableGridDashedLine(10f, 10f, 0f);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+        xAxis.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                Date date = new Date((long)value * 1000L);
+                formatwaktu.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+                return formatwaktu.format(date);
+            }
+        });
+        String label = "Kelembapan Ruang";
+        LineDataSet lineDataSet2 = new LineDataSet(DataVals2, label);
         lineDataSet2.setValues(DataVals2);
         lineDataSet2.setDrawIcons(false);
         lineDataSet2.setColor(Color.rgb(4, 129, 222));
@@ -254,24 +266,25 @@ public class GrafikActivity extends AppCompatActivity {
         lineDataSet2.setFormSize(15.f);
         lineDataSet2.setFillColor(Color.rgb(4, 129, 222));
 
-        iLineDataSets.clear();
-        iLineDataSets.add(lineDataSet);
-        lineData = new LineData(iLineDataSets);
+        iLineDataSets2.clear();
+        iLineDataSets2.add(lineDataSet2);
+        lineData2 = new LineData(iLineDataSets2);
 //        String tanggal = formateDateFromstring(englishDateFormat, dateFormat);
 //        Description description = lineChart.getDescription();
 //        description.setText("Waktu (" + tanggal + ")");
 //        description.setTextSize(12f);
 
-        lineChart.clear();
-        lineChart.setData(lineData);
-        lineChart.setTouchEnabled(true);
-        lineChart.setDragEnabled(true);
-        lineChart.setScaleEnabled(true);
-        lineChart.setPinchZoom(false);
-        lineChart.setDrawGridBackground(false);
-        lineChart.getDescription().setEnabled(false);
-        lineChart.getAxisRight().setEnabled(false);
-        lineChart.animateX(2000, Easing.EaseInOutBounce);
-        lineChart.invalidate();
+        lineChart2.clear();
+        lineChart2.setData(lineData2);
+        lineChart2.setTouchEnabled(true);
+        lineChart2.setDragEnabled(true);
+        lineChart2.setScaleEnabled(true);
+        lineChart2.setPinchZoom(false);
+        lineChart2.setDrawGridBackground(true);
+        lineChart2.setHorizontalScrollBarEnabled(true);
+        lineChart2.getDescription().setEnabled(false);
+        lineChart2.getAxisRight().setEnabled(false);
+        lineChart2.animateX(2000, Easing.EaseInOutBounce);
+        lineChart2.invalidate();
     }
 }

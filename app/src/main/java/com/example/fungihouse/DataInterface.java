@@ -12,10 +12,6 @@ import java.util.Locale;
 public class DataInterface {
 
     final public static FirebaseDatabase database = FirebaseDatabase.getInstance();
-    final public static DatabaseReference myRefGrafik = database.getReference("monitoring/grafik");
-    final public static DatabaseReference myRefMonitor = database.getReference("monitoring");
-    final public static DatabaseReference myRefFeeder = database.getReference("feeder");
-    final public static DatabaseReference myRefPanduan = database.getReference("panduan");
     // Init format
     final public static SimpleDateFormat myDateFormat = new SimpleDateFormat("dd MMM yyyy HH:mm", new Locale("id","ID"));
     final public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("ddMMyyyyHHmm", Locale.getDefault());

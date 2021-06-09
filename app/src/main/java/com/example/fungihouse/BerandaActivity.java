@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,6 +42,10 @@ public class BerandaActivity extends AppCompatActivity {
     ImageView img_off, img_info;
     String username;
     SharedPreferences sharedPreferences;
+    Calendar mCalendar;
+    public String getDate;
+    Dialog dialog;
+    Button pilihTanggal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +57,7 @@ public class BerandaActivity extends AppCompatActivity {
         tv_day = (TextView) findViewById(R.id.tv_day);
         tv_hour = (TextView) findViewById(R.id.tv_hour);
         tv_nama = (TextView) findViewById(R.id.tv_username);
+        pilihTanggal = findViewById(R.id.pilihTanggal);
 
         sharedPreferences = getSharedPreferences("data_user", Context.MODE_PRIVATE);
         username = sharedPreferences.getString("username", null);
@@ -98,14 +106,36 @@ public class BerandaActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        pilihTanggal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(BerandaActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        mCalendar.set(Calendar.YEAR, year);
+                        mCalendar.set(Calendar.MONTH, month);
+                        mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        getDate = englishDateFormat.format(mCalendar.getTime());
+                    }
+                },
+                        mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
         btnLanjut = findViewById(R.id.btn_lanjut);
         btnLanjut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), GrafikActivity.class);
-                startActivity(intent);
+                if (getDate == null){
+                    Toast.makeText(BerandaActivity.this, "Silakan pilih tanggal\nterlebih dahulu!", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Intent intent = new Intent(BerandaActivity.this, GrafikActivity.class);
+                    intent.putExtra("date", getDate);
+                    startActivity(intent);
+                }
             }
         });
+        mCalendar = Calendar.getInstance();
         img_off = findViewById(R.id.img_off);
         img_off.setOnClickListener(new View.OnClickListener() {
             @Override
