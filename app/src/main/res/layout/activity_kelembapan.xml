@@ -70,7 +70,7 @@
                     android:id="@+id/tv_date"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:ems="10"
+                    android:ems="8"
                     android:inputType="date"
                     android:text="Senin, 01 Januari 2020"
                     android:textColor="#FFFFFF"

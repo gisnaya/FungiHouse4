@@ -91,7 +91,7 @@ public class SuhuActivity extends AppCompatActivity {
                 Log.i("sqw", String.valueOf(fetchData.size()));
                 if (fetchData.size() > 0) {
                     FetchData showData = fetchData.get(0);
-                    tv_suhu.setText(showData.getSuhu().toString()+"\u2109");
+                    tv_suhu.setText(showData.getSuhu().toString()+"\u2103");
                     tv_time.setText(showData.getTime());
                     tv_date.setText(showData.getDate());
                     tv_day.setText(showData.getDate());
