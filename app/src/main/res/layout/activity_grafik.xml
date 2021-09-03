@@ -85,7 +85,7 @@
                     android:fontFamily="@font/preg"
                     android:gravity="center"
                     android:inputType="date"
-                    android:text="Senin, 01 Januari 2020"
+                    android:text="-"
                     android:textColor="#FF934F"
                     android:textSize="18sp" />
 

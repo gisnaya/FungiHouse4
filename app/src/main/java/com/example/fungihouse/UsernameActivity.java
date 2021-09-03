@@ -73,6 +73,7 @@ public class UsernameActivity extends AppCompatActivity {
 //                    databaseReference.child(name).setValue(usernameInfo);
                     Intent intent = new Intent(getApplicationContext(), BerandaActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }
 

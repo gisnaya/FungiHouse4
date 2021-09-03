@@ -141,6 +141,7 @@ public class BerandaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         img_info = findViewById(R.id.img_info);
