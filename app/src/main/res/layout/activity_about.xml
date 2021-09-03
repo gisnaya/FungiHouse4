@@ -93,7 +93,7 @@
                     android:textColor="#FF934F"
                     android:textSize="15dp"
                     android:fontFamily="@font/preg"
-                    android:text="Aplikasi Fungi House merupakan aplikasi monitoring ruang budidaya jamur tiram yang terletak di Desa Banding Kabupaten Semarang. Tujuan dibuatnya aplikasi ini yaitu, petani dapat memonitoring ruang budidaya jamur tiram di mana pun dan kapan pun. dengan menggunakan aplikasi ini ruang budidaya jamur tiram dapat selalu termonitor suhu ruang, kelembapan ruang maupun penyiraman pada jamur tiram. pada aplikasi ini terdapat menu informasi berupa suhu ruang setiap 5 detik yang berada pada ruang budidaya selama 1 hari. Selain suhu ruang, ada pula kelemabapan ruang. Di samping itu pada aplikasi ini terdapat grafik suhu serta kelembapan setiap harinya. Pada aplikasi ini juga memberikan informasi kapan ruang budidaya tersebut telah terjadi penyiraman. "/>
+                    android:text="Aplikasi Fungi House merupakan aplikasi monitoring ruang budidaya jamur tiram yang terletak di Desa Genting Kabupaten Semarang. Tujuan dibuatnya aplikasi ini yaitu agar petani dapat memonitoring ruang budidaya jamur tiram di mana pun dan kapan pun. Dengan menggunakan aplikasi ini, ruang budidaya jamur tiram dapat selalu termonitor suhu ruang, kelembapan ruang maupun penyiraman pada jamur tiram. Pada aplikasi ini terdapat menu informasi berupa suhu dan kelembapan ruang setiap 30 detik yang berada pada ruang budidaya selama 1 hari. Di samping itu pada aplikasi ini terdapat grafik suhu serta kelembapan setiap harinya. Pada aplikasi ini juga memberikan informasi kapan ruang budidaya tersebut telah terjadi penyiraman secara otomatis. "/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -116,9 +116,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/preg"
                     android:text="Email : gisnaya.avisyah@gmail.com"
+                    android:textColor="#FF934F"
+                    android:textSize="15dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/preg"
+                    android:text="Politeknik Negeri Semarang"
                     android:textColor="#FF934F"
                     android:textSize="15dp" />
 

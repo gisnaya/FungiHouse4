@@ -44,7 +44,6 @@ public class BerandaActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Calendar mCalendar;
     public String getDate;
-    Dialog dialog;
     Button pilihTanggal;
 
     @Override
