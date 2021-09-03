@@ -119,9 +119,16 @@ public class KelembapanActivity extends AppCompatActivity {
         img_chevron_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BerandaActivity.class);
+                Intent intent = new Intent(KelembapanActivity.this, BerandaActivity.class);
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(KelembapanActivity.this, BerandaActivity.class);
+        startActivity(intent);
     }
 }
