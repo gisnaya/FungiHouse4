@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -30,6 +32,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import static com.example.fungihouse.DataInterface.dayFormat;
+import static com.example.fungihouse.DataInterface.englishDateFormat;
 import static com.example.fungihouse.DataInterface.hourFormat;
 
 public class KelembapanActivity extends AppCompatActivity {
@@ -43,6 +46,8 @@ public class KelembapanActivity extends AppCompatActivity {
     String username;
     SharedPreferences sharedPreferences;
     ImageView img_chevron_left, gauge;
+    Handler handler = new Handler();
+    Runnable refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +67,13 @@ public class KelembapanActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fetchDataHum=new ArrayList<>();
 
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"),
+                Locale.getDefault());
+        Date currentLocalTime = calendar.getTime();
+        DateFormat date = new SimpleDateFormat("yyyyMMdd");
+        String localTime = date.format(currentLocalTime);
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
-        String dateNow = dateFormat.format(new Date());
+        String dateNow = englishDateFormat.format(new Date());
         databaseReference = FirebaseDatabase.getInstance().getReference("history/" +dateNow);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -74,8 +83,8 @@ public class KelembapanActivity extends AppCompatActivity {
                         Double hum = postSnapshot.child("hum").getValue(Double.class);
                         Long timestamp = postSnapshot.child("timestamp").getValue(long.class);
                         Date date = new Date(timestamp * 1000L);
-                        dayFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
                         hourFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+                        dayFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
                         String hour = hourFormat.format(date);
                         String day = dayFormat.format(date);
                         Log.d(TAG, "hum : "+hum+" hour : "+hour+" day : "+day);
@@ -123,6 +132,13 @@ public class KelembapanActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        refresh = new Runnable() {
+            public void run() {
+                // Do something
+                handler.postDelayed(refresh, 5000);
+            }
+        };
+        handler.post(refresh);
     }
 
     @Override

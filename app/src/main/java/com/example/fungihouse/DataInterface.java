@@ -20,10 +20,10 @@ public class DataInterface {
     final public static SimpleDateFormat simpleDate = new SimpleDateFormat("ddMMyyyy", Locale.getDefault());
     final public static SimpleDateFormat formatwaktu = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
-    final public static SimpleDateFormat englishDateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+    final public static SimpleDateFormat englishDateFormat = new SimpleDateFormat("yyyyMMdd", new Locale("id","ID"));
 
     final public static SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE, dd MMMM yyyy", new Locale("id","ID"));
-    final public static SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+    final public static SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm:ss", new Locale("id","ID"));
     public static String grafikurl, tanggal;
 
     public static String formateDateFromstring(SimpleDateFormat inputFormat, SimpleDateFormat outputFormat, String inputDate){

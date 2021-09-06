@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,6 +33,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import static com.example.fungihouse.DataInterface.dayFormat;
+import static com.example.fungihouse.DataInterface.englishDateFormat;
 import static com.example.fungihouse.DataInterface.hourFormat;
 
 public class SuhuActivity extends AppCompatActivity {
@@ -45,6 +47,8 @@ public class SuhuActivity extends AppCompatActivity {
     String username;
     SharedPreferences sharedPreferences;
     ImageView img_chevron_left,gauge;
+    Handler handler = new Handler();
+    Runnable refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +68,7 @@ public class SuhuActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fetchData = new ArrayList<>();
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
-        String dateNow = dateFormat.format(new Date());
+        String dateNow = englishDateFormat.format(new Date());
         databaseReference = FirebaseDatabase.getInstance().getReference("history/" +dateNow);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -75,8 +78,8 @@ public class SuhuActivity extends AppCompatActivity {
                         Double temp = postSnapshot.child("temp").getValue(Double.class);
                         Long timestamp = postSnapshot.child("timestamp").getValue(long.class);
                         Date date = new Date(timestamp * 1000L);
-                        dayFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
                         hourFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+                        dayFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
                         String hour = hourFormat.format(date);
                         String day = dayFormat.format(date);
                         Log.d(TAG, "hum : "+temp+" hour : "+hour+" day : "+day);
@@ -162,6 +165,13 @@ public class SuhuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        refresh = new Runnable() {
+            public void run() {
+                // Do something
+                handler.postDelayed(refresh, 5000);
+            }
+        };
+        handler.post(refresh);
 
     }
     @Override

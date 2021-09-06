@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -29,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import static com.example.fungihouse.DataInterface.dayFormat;
 import static com.example.fungihouse.DataInterface.englishDateFormat;
@@ -68,7 +70,9 @@ public class BerandaActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String temp = snapshot.child("temp").getValue().toString();
                 String hum = snapshot.child("hum").getValue().toString();
+                dayFormat.setTimeZone(TimeZone.getTimeZone("Asia/Jakarta"));
                 String day = formateDateFromstring(englishDateFormat, dayFormat, snapshot.child("day").getValue().toString());
+                Log.i("initag", "date: "+day);
                 String hour = snapshot.child("hour").getValue().toString();
 
 //                DateFormat dateFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
@@ -153,4 +157,5 @@ public class BerandaActivity extends AppCompatActivity {
             }
         });
     }
+
 }
