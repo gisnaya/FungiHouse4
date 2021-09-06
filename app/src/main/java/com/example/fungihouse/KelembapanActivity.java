@@ -73,57 +73,6 @@ public class KelembapanActivity extends AppCompatActivity {
         DateFormat date = new SimpleDateFormat("yyyyMMdd");
         String localTime = date.format(currentLocalTime);
 
-        String dateNow = englishDateFormat.format(new Date());
-        databaseReference = FirebaseDatabase.getInstance().getReference("history/" +dateNow);
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    try {
-                        Double hum = postSnapshot.child("hum").getValue(Double.class);
-                        Long timestamp = postSnapshot.child("timestamp").getValue(long.class);
-                        Date date = new Date(timestamp * 1000L);
-                        hourFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
-                        dayFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
-                        String hour = hourFormat.format(date);
-                        String day = dayFormat.format(date);
-                        Log.d(TAG, "hum : "+hum+" hour : "+hour+" day : "+day);
-                        fetchDataHum.add(new FetchDataHum(hum, hour, day));
-                    }catch (Exception e){
-                        Log.d(TAG, "exception: "+e);
-                    }
-                }
-                Collections.reverse(fetchDataHum);
-                helperAdapterHum = new HelperAdapterHum(fetchDataHum);
-                recyclerView.setAdapter(helperAdapterHum);
-                Log.i("sqw", String.valueOf(fetchDataHum.size()));
-                if (fetchDataHum.size() > 0) {
-                    FetchDataHum showData = fetchDataHum.get(0);
-                    tv_hum.setText(showData.getHum().toString()+"%");
-                    tv_time.setText(showData.getTime());
-                    tv_date.setText(showData.getDate());
-                    tv_day.setText(showData.getDate());
-                    gauge.setVisibility(View.VISIBLE);
-                    recyclerView.setVisibility(View.VISIBLE);
-                } else {
-                    tv_date.setText(dayFormat.format(new Date()));
-                    tv_day.setText("Data Belum Tersedia");
-                    tv_time.setText("-");
-                    tv_hum.setText("-");
-                    gauge.setVisibility(View.INVISIBLE);
-                    recyclerView.setVisibility(View.INVISIBLE);
-                }
-
-//                DateFormat dateFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
-//                Date date = new Date();
-//                String strDate = dateFormat.getDateInstance(dateFormat.FULL).format(date);
-//                databaseReference.child("day").setValue(strDate);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
         img_chevron_left = findViewById(R.id.img_chevron_left);
         img_chevron_left.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,7 +84,56 @@ public class KelembapanActivity extends AppCompatActivity {
         refresh = new Runnable() {
             public void run() {
                 // Do something
-                handler.postDelayed(refresh, 5000);
+                hourFormat.setTimeZone(TimeZone.getTimeZone("Asia/Jakarta"));
+                dayFormat.setTimeZone(TimeZone.getTimeZone("Asia/Jakarta"));
+                String dateNow = englishDateFormat.format(new Date());
+                String timeNow = hourFormat.format(new Date());
+                String dateShow  = dayFormat.format(new Date());
+                tv_date.setText(dateShow);
+                tv_time.setText(timeNow);
+
+                databaseReference = FirebaseDatabase.getInstance().getReference("history/" +dateNow);
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                            try {
+                                Double hum = postSnapshot.child("hum").getValue(Double.class);
+                                Long timestamp = postSnapshot.child("timestamp").getValue(long.class);
+                                Date date = new Date(timestamp * 1000L);
+                                hourFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+                                dayFormat.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+                                String hour = hourFormat.format(date);
+                                String day = dayFormat.format(date);
+                                Log.d(TAG, "hum : "+hum+" hour : "+hour+" day : "+day);
+                                fetchDataHum.add(new FetchDataHum(hum, hour, day));
+                            }catch (Exception e){
+                                Log.d(TAG, "exception: "+e);
+                            }
+                        }
+                        Collections.reverse(fetchDataHum);
+                        helperAdapterHum = new HelperAdapterHum(fetchDataHum);
+                        recyclerView.setAdapter(helperAdapterHum);
+                        Log.i("sqw", String.valueOf(fetchDataHum.size()));
+                        if (fetchDataHum.size() > 0) {
+                            FetchDataHum showData = fetchDataHum.get(0);
+                            tv_hum.setText(showData.getHum().toString()+"%");
+                            tv_day.setText(showData.getDate());
+                            gauge.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.VISIBLE);
+                        } else {
+                            tv_day.setText("Data Belum Tersedia");
+                            tv_hum.setText("-");
+                            gauge.setVisibility(View.INVISIBLE);
+                            recyclerView.setVisibility(View.INVISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+                handler.postDelayed(refresh, 1000);
             }
         };
         handler.post(refresh);

@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -85,6 +86,8 @@ public class GrafikActivity extends AppCompatActivity {
     HelperAdapter helperAdapter;
     HelperAdapterHum helperAdapterHum;
     String getDate;
+    Handler handler = new Handler();
+    Runnable refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,12 +137,6 @@ public class GrafikActivity extends AppCompatActivity {
                 }
                 ShowChart(DataVals);
                 ShowChart2(DataVals2);
-
-
-//                DateFormat dateFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
-//                Date date = new Date();
-//                String strDate = dateFormat.getDateInstance(dateFormat.FULL).format(date);
-//                databaseReference.child("day").setValue(strDate);
             }
 
             @Override
@@ -155,6 +152,13 @@ public class GrafikActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        refresh = new Runnable() {
+            public void run() {
+
+                handler.postDelayed(refresh, 1000);
+            }
+        };
+        handler.post(refresh);
 
     }
     private void ShowChart (ArrayList <Entry> DataVals) {
